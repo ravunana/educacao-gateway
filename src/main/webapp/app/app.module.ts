@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import './vendor';
 import { EducacaoSharedModule } from 'app/shared/shared.module';
@@ -23,7 +24,8 @@ import { ErrorComponent } from './layouts/error/error.component';
     EducacaoHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EducacaoEntityModule,
-    EducacaoAppRoutingModule
+    EducacaoAppRoutingModule,
+    BrowserAnimationsModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent]
