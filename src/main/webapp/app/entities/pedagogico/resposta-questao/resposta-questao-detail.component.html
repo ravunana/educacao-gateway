@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="respostaQuestao">
+            <h2><span jhiTranslate="educacaoApp.pedagogicoRespostaQuestao.detail.title">Resposta Questao</span> {{respostaQuestao.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pedagogicoRespostaQuestao.resposta">Resposta</span></dt>
+                <dd>
+                    <span>{{respostaQuestao.resposta}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoRespostaQuestao.questao">Questao</span></dt>
+                <dd>
+                    <div *ngIf="respostaQuestao.questaoId">
+                        <a [routerLink]="['/questao-teste', respostaQuestao.questaoId, 'view']">{{respostaQuestao.questaoQuestao}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/resposta-questao', respostaQuestao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

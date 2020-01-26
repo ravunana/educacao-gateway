@@ -1,0 +1,28 @@
+{
+  "educacaoApp": {
+    "pedagogicoRespostaQuestao": {
+      "home": {
+        "title": "Resposta Questaos",
+        "createLabel": "Criar novo(a) Resposta Questao",
+        "createOrEditLabel": "Criar ou editar Resposta Questao",
+        "search": "Procurar por Resposta Questao",
+        "notFound": "Nenhum Resposta Questaos encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Resposta Questao {{ id }}?"
+      },
+      "detail": {
+        "title": "Resposta Questao"
+      },
+      "resposta": "Resposta",
+      "questao": "Questao"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoRespostaQuestao": {
+      "created": "Um novo Resposta Questao foi criado com o identificador {{ param }}",
+      "updated": "Resposta Questao com identificador {{ param }} foi actualizado",
+      "deleted": "Resposta Questao com identificador {{ param }} foi eliminado"
+    }
+  }
+}

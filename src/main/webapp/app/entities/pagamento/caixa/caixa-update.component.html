@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="rv-caixa-heading" jhiTranslate="educacaoApp.pagamentoCaixa.home.createOrEditLabel">Create or edit a Caixa</h2>
+            <div>
+                <rv-alert-error></rv-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pagamentoCaixa.descricao" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                    <div *ngIf="editForm.get('descricao')!.invalid && (editForm.get('descricao')!.dirty || editForm.get('descricao')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descricao')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pagamentoCaixa.proprietario" for="field_proprietario">Proprietario</label>
+                    <input type="text" class="form-control" name="proprietario" id="field_proprietario"
+                           formControlName="proprietario"/>
+                    <div *ngIf="editForm.get('proprietario')!.invalid && (editForm.get('proprietario')!.dirty || editForm.get('proprietario')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('proprietario')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pagamentoCaixa.numeroConta" for="field_numeroConta">Numero Conta</label>
+                    <input type="text" class="form-control" name="numeroConta" id="field_numeroConta"
+                           formControlName="numeroConta"/>
+                    <div *ngIf="editForm.get('numeroConta')!.invalid && (editForm.get('numeroConta')!.dirty || editForm.get('numeroConta')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numeroConta')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pagamentoCaixa.iban" for="field_iban">Iban</label>
+                    <input type="text" class="form-control" name="iban" id="field_iban"
+                           formControlName="iban"/>
+                    <div *ngIf="editForm.get('iban')!.invalid && (editForm.get('iban')!.dirty || editForm.get('iban')!.touched)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pagamentoCaixa.ativo" for="field_ativo">Ativo</label>
+                    <input type="checkbox" class="form-control" name="ativo" id="field_ativo"
+                           formControlName="ativo"/>
+                    <div *ngIf="editForm.get('ativo')!.invalid && (editForm.get('ativo')!.dirty || editForm.get('ativo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ativo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

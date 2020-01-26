@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="matricula">
+            <h2><span jhiTranslate="educacaoApp.secretariaMatricula.detail.title">Matricula</span> {{matricula.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.data">Data</span></dt>
+                <dd>
+                    <span>{{matricula.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.numeroChamada">Numero Chamada</span></dt>
+                <dd>
+                    <span>{{matricula.numeroChamada}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.anoLectivo">Ano Lectivo</span></dt>
+                <dd>
+                    <span>{{matricula.anoLectivo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.fotografia">Fotografia</span></dt>
+                <dd>
+                    <span>{{matricula.fotografia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.certificado">Certificado</span></dt>
+                <dd>
+                    <span>{{matricula.certificado}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.documentoIdentificacao">Documento Identificacao</span></dt>
+                <dd>
+                    <span>{{matricula.documentoIdentificacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.resenciamentoMilitar">Resenciamento Militar</span></dt>
+                <dd>
+                    <span>{{matricula.resenciamentoMilitar}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.documentoSaude">Documento Saude</span></dt>
+                <dd>
+                    <span>{{matricula.documentoSaude}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.fichaTransferencia">Ficha Transferencia</span></dt>
+                <dd>
+                    <span>{{matricula.fichaTransferencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.historicoEscolar">Historico Escolar</span></dt>
+                <dd>
+                    <span>{{matricula.historicoEscolar}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.observacao">Observacao</span></dt>
+                <dd>
+                    <span>{{matricula.observacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.confirmacao">Confirmacao</span></dt>
+                <dd>
+                    <span>{{matricula.confirmacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.periodoLectivo">Periodo Lectivo</span></dt>
+                <dd>
+                    <span>{{matricula.periodoLectivo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.turma">Turma</span></dt>
+                <dd>
+                    <span>{{matricula.turma}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.curso">Curso</span></dt>
+                <dd>
+                    <span>{{matricula.curso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.turno">Turno</span></dt>
+                <dd>
+                    <span>{{matricula.turno}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.sala">Sala</span></dt>
+                <dd>
+                    <span>{{matricula.sala}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.classe">Classe</span></dt>
+                <dd>
+                    <span>{{matricula.classe}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.aluno">Aluno</span></dt>
+                <dd>
+                    <div *ngIf="matricula.alunoId">
+                        <a [routerLink]="['/aluno', matricula.alunoId, 'view']">{{matricula.alunoNumeroProcesso}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaMatricula.categoria">Categoria</span></dt>
+                <dd>
+                    <div *ngIf="matricula.categoriaId">
+                        <a [routerLink]="['/categoria-aluno', matricula.categoriaId, 'view']">{{matricula.categoriaNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/matricula', matricula.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

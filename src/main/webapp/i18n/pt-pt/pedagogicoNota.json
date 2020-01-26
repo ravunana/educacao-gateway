@@ -1,0 +1,44 @@
+{
+  "educacaoApp": {
+    "pedagogicoNota": {
+      "home": {
+        "title": "Notas",
+        "createLabel": "Criar novo(a) Nota",
+        "createOrEditLabel": "Criar ou editar Nota",
+        "search": "Procurar por Nota",
+        "notFound": "Nenhum Notas encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Nota {{ id }}?"
+      },
+      "detail": {
+        "title": "Nota"
+      },
+      "numeroProcesso": "Numero Processo",
+      "nomeAluno": "Nome Aluno",
+      "disciplina": "Disciplina",
+      "peridoLectivo": "Perido Lectivo",
+      "anoLectivo": "Ano Lectivo",
+      "faltaJustificada": "Falta Justificada",
+      "faltaInjustificada": "Falta Injustificada",
+      "avaliacaoContinuca": "Avaliacao Continuca",
+      "primeiraProva": "Primeira Prova",
+      "segundaProva": "Segunda Prova",
+      "exame": "Exame",
+      "recurso": "Recurso",
+      "exameEspecial": "Exame Especial",
+      "prova": "Prova",
+      "situacao": "Situacao",
+      "turma": "Turma",
+      "curriculo": "Curriculo",
+      "professor": "Professor"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoNota": {
+      "created": "Um novo Nota foi criado com o identificador {{ param }}",
+      "updated": "Nota com identificador {{ param }} foi actualizado",
+      "deleted": "Nota com identificador {{ param }} foi eliminado"
+    }
+  }
+}

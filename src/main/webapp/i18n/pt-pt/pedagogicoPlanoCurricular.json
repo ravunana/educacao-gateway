@@ -1,0 +1,40 @@
+{
+  "educacaoApp": {
+    "pedagogicoPlanoCurricular": {
+      "home": {
+        "title": "Plano Curriculars",
+        "createLabel": "Criar novo(a) Plano Curricular",
+        "createOrEditLabel": "Criar ou editar Plano Curricular",
+        "search": "Procurar por Plano Curricular",
+        "notFound": "Nenhum Plano Curriculars encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Plano Curricular {{ id }}?"
+      },
+      "detail": {
+        "title": "Plano Curricular"
+      },
+      "descricao": "Descricao",
+      "terminal": "Terminal",
+      "tempoSemanal": "Tempo Semanal",
+      "periodoLectivo": "Periodo Lectivo",
+      "componente": "Componente",
+      "disciplina": "Disciplina",
+      "classe": "Classe",
+      "planoAula": "Plano Aula",
+      "dosificacao": "Dosificacao",
+      "nota": "Nota",
+      "aula": "Aula",
+      "horario": "Horario",
+      "testeConhecimento": "Teste Conhecimento",
+      "curso": "Curso"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoPlanoCurricular": {
+      "created": "Um novo Plano Curricular foi criado com o identificador {{ param }}",
+      "updated": "Plano Curricular com identificador {{ param }} foi actualizado",
+      "deleted": "Plano Curricular com identificador {{ param }} foi eliminado"
+    }
+  }
+}

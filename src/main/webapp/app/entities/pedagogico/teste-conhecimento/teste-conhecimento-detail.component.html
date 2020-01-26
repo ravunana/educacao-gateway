@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="testeConhecimento">
+            <h2><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.detail.title">Teste Conhecimento</span> {{testeConhecimento.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.categoria">Categoria</span></dt>
+                <dd>
+                    <span>{{testeConhecimento.categoria}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.periodoLectivo">Periodo Lectivo</span></dt>
+                <dd>
+                    <span>{{testeConhecimento.periodoLectivo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.duracao">Duracao</span></dt>
+                <dd>
+                    <span>{{testeConhecimento.duracao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.data">Data</span></dt>
+                <dd>
+                    <span>{{testeConhecimento.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.curriculo">Curriculo</span></dt>
+                <dd>
+                    <div *ngIf="testeConhecimento.curriculoId">
+                        <a [routerLink]="['/plano-curricular', testeConhecimento.curriculoId, 'view']">{{testeConhecimento.curriculoDescricao}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.turma">Turma</span></dt>
+                <dd>
+                    <div *ngIf="testeConhecimento.turmaId">
+                        <a [routerLink]="['/turma', testeConhecimento.turmaId, 'view']">{{testeConhecimento.turmaDescricao}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.professor">Professor</span></dt>
+                <dd>
+                    <div *ngIf="testeConhecimento.professorId">
+                        <a [routerLink]="['/professor', testeConhecimento.professorId, 'view']">{{testeConhecimento.professorNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/teste-conhecimento', testeConhecimento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

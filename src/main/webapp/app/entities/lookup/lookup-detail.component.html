@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="lookup">
+            <h2><span jhiTranslate="educacaoApp.lookup.detail.title">Lookup</span> {{lookup.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.lookup.nome">Nome</span></dt>
+                <dd>
+                    <span>{{lookup.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.lookup.sigla">Sigla</span></dt>
+                <dd>
+                    <span>{{lookup.sigla}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.lookup.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{lookup.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.lookup.usuario">Usuario</span></dt>
+                <dd>
+                    <span>{{lookup.usuario}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.lookup.entidade">Entidade</span></dt>
+                <dd>
+                    <div *ngIf="lookup.entidadeId">
+                        <a [routerLink]="['/entidade-sistema', lookup.entidadeId, 'view']">{{lookup.entidadeNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/lookup', lookup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "educacaoApp": {
+    "pedagogicoProvaAptidaoProfissional": {
+      "home": {
+        "title": "Prova Aptidao Profissionals",
+        "createLabel": "Criar novo(a) Prova Aptidao Profissional",
+        "createOrEditLabel": "Criar ou editar Prova Aptidao Profissional",
+        "search": "Procurar por Prova Aptidao Profissional",
+        "notFound": "Nenhum Prova Aptidao Profissionals encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Prova Aptidao Profissional {{ id }}?"
+      },
+      "detail": {
+        "title": "Prova Aptidao Profissional"
+      },
+      "numeroProcesso": "Numero Processo",
+      "nomeAluno": "Nome Aluno",
+      "livroRegistro": "Livro Registro",
+      "folhaRegistro": "Folha Registro",
+      "temaProjectoTecnologio": "Tema Projecto Tecnologio",
+      "notaProjectoTecnologio": "Nota Projecto Tecnologio",
+      "dataDefesa": "Data Defesa",
+      "localEstagio": "Local Estagio",
+      "aproveitamentoEstagio": "Aproveitamento Estagio",
+      "inicioEstagio": "Inicio Estagio",
+      "finalEstagio": "Final Estagio",
+      "data": "Data"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoProvaAptidaoProfissional": {
+      "created": "Um novo Prova Aptidao Profissional foi criado com o identificador {{ param }}",
+      "updated": "Prova Aptidao Profissional com identificador {{ param }} foi actualizado",
+      "deleted": "Prova Aptidao Profissional com identificador {{ param }} foi eliminado"
+    }
+  }
+}

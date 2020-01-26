@@ -1,0 +1,118 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.home.title">Plano Actividades</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-plano-actividade" [routerLink]="['/plano-actividade/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.pedagogicoPlanoActividade.home.createLabel">
+            Create a new Plano Actividade
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.pedagogicoPlanoActividade.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="planoActividades?.length === 0">
+        <span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.home.notFound">No planoActividades found</span>
+    </div>
+    <div class="table-responsive" *ngIf="planoActividades?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroActividade"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.numeroActividade">Numero Actividade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="atividade"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.atividade">Atividade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="objectivos"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.objectivos">Objectivos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="de"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.de">De</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="ate"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.ate">Ate</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="responsavel"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.responsavel">Responsavel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="local"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.local">Local</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="observacao"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.observacao">Observacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="participantes"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.participantes">Participantes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="coResponsavel"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.coResponsavel">Co Responsavel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="anoLectivo"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.anoLectivo">Ano Lectivo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="statusActividade"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.statusActividade">Status Actividade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="periodoLectivo"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.periodoLectivo">Periodo Lectivo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="turno"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.turno">Turno</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="classe"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.classe">Classe</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cursoNome"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.curso">Curso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="turmaDescricao"><span jhiTranslate="educacaoApp.pedagogicoPlanoActividade.turma">Turma</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let planoActividade of planoActividades ;trackBy: trackId">
+                <td><a [routerLink]="['/plano-actividade', planoActividade.id, 'view' ]">{{planoActividade.id}}</a></td>
+                <td>{{planoActividade.numeroActividade}}</td>
+                <td>{{planoActividade.atividade}}</td>
+                <td>{{planoActividade.objectivos}}</td>
+                <td>{{planoActividade.de | date:'mediumDate'}}</td>
+                <td>{{planoActividade.ate | date:'mediumDate'}}</td>
+                <td>{{planoActividade.responsavel}}</td>
+                <td>{{planoActividade.local}}</td>
+                <td>{{planoActividade.observacao}}</td>
+                <td>{{planoActividade.participantes}}</td>
+                <td>{{planoActividade.coResponsavel}}</td>
+                <td>{{planoActividade.anoLectivo}}</td>
+                <td>{{planoActividade.statusActividade}}</td>
+                <td>{{planoActividade.periodoLectivo}}</td>
+                <td>{{planoActividade.turno}}</td>
+                <td>{{planoActividade.classe}}</td>
+                <td>
+                    <div *ngIf="planoActividade.cursoId">
+                        <a [routerLink]="['/curso', planoActividade.cursoId , 'view' ]" >{{planoActividade.cursoNome}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planoActividade.turmaId">
+                        <a [routerLink]="['/turma', planoActividade.turmaId , 'view' ]" >{{planoActividade.turmaDescricao}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/plano-actividade', planoActividade.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/plano-actividade', planoActividade.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(planoActividade)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="planoActividades?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

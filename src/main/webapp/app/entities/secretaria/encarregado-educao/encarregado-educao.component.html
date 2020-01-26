@@ -1,0 +1,102 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.home.title">Encarregado Educaos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-encarregado-educao" [routerLink]="['/encarregado-educao/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.secretariaEncarregadoEducao.home.createLabel">
+            Create a new Encarregado Educao
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.secretariaEncarregadoEducao.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="encarregadoEducaos?.length === 0">
+        <span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.home.notFound">No encarregadoEducaos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="encarregadoEducaos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nome"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sexo"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.sexo">Sexo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nif"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.nif">Nif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroIdentificacao"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.numeroIdentificacao">Numero Identificacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="residencia"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.residencia">Residencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactoPessoal"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoPessoal">Contacto Pessoal</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactoTrabalho"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoTrabalho">Contacto Trabalho</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactoResidencia"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoResidencia">Contacto Residencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="email"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="localTrabalho"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.localTrabalho">Local Trabalho</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cargo"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.cargo">Cargo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="salario"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.salario">Salario</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="grauParentesco"><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.grauParentesco">Grau Parentesco</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let encarregadoEducao of encarregadoEducaos ;trackBy: trackId">
+                <td><a [routerLink]="['/encarregado-educao', encarregadoEducao.id, 'view' ]">{{encarregadoEducao.id}}</a></td>
+                <td>{{encarregadoEducao.nome}}</td>
+                <td>{{encarregadoEducao.sexo}}</td>
+                <td>{{encarregadoEducao.nif}}</td>
+                <td>{{encarregadoEducao.numeroIdentificacao}}</td>
+                <td>{{encarregadoEducao.residencia}}</td>
+                <td>{{encarregadoEducao.contactoPessoal}}</td>
+                <td>{{encarregadoEducao.contactoTrabalho}}</td>
+                <td>{{encarregadoEducao.contactoResidencia}}</td>
+                <td>{{encarregadoEducao.email}}</td>
+                <td>{{encarregadoEducao.localTrabalho}}</td>
+                <td>{{encarregadoEducao.cargo}}</td>
+                <td>{{encarregadoEducao.salario}}</td>
+                <td>{{encarregadoEducao.grauParentesco}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/encarregado-educao', encarregadoEducao.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/encarregado-educao', encarregadoEducao.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(encarregadoEducao)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="encarregadoEducaos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

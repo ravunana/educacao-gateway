@@ -1,0 +1,45 @@
+{
+  "educacaoApp": {
+    "pedagogicoTurma": {
+      "home": {
+        "title": "Turmas",
+        "createLabel": "Criar novo(a) Turma",
+        "createOrEditLabel": "Criar ou editar Turma",
+        "search": "Procurar por Turma",
+        "notFound": "Nenhum Turmas encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Turma {{ id }}?"
+      },
+      "detail": {
+        "title": "Turma"
+      },
+      "descricao": "Descricao",
+      "anoLectivo": "Ano Lectivo",
+      "data": "Data",
+      "abertura": "Abertura",
+      "encerramento": "Encerramento",
+      "lotacao": "Lotacao",
+      "aberta": "Aberta",
+      "periodoLectivo": "Periodo Lectivo",
+      "turno": "Turno",
+      "sala": "Sala",
+      "classe": "Classe",
+      "horario": "Horario",
+      "planoActividade": "Plano Actividade",
+      "nota": "Nota",
+      "aula": "Aula",
+      "testeConhecimento": "Teste Conhecimento",
+      "curso": "Curso",
+      "coordenador": "Coordenador",
+      "planoAulaTurma": "Plano Aula Turma"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoTurma": {
+      "created": "Um novo Turma foi criado com o identificador {{ param }}",
+      "updated": "Turma com identificador {{ param }} foi actualizado",
+      "deleted": "Turma com identificador {{ param }} foi eliminado"
+    }
+  }
+}

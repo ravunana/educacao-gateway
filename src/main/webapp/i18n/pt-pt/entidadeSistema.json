@@ -1,0 +1,24 @@
+{
+  "educacaoApp": {
+    "entidadeSistema": {
+      "home": {
+        "title": "Entidade Sistemas",
+        "createLabel": "Criar novo(a) Entidade Sistema",
+        "createOrEditLabel": "Criar ou editar Entidade Sistema",
+        "search": "Procurar por Entidade Sistema",
+        "notFound": "Nenhum Entidade Sistemas encontrado"
+      },
+      "created": "Um novo Entidade Sistema foi criado com o identificador {{ param }}",
+      "updated": "Entidade Sistema com identificador {{ param }} foi actualizado",
+      "deleted": "Entidade Sistema com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Entidade Sistema {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidade Sistema"
+      },
+      "nome": "Nome",
+      "lookup": "Lookup"
+    }
+  }
+}

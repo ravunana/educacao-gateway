@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="efeitoPagamento">
+            <h2><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.detail.title">Efeito Pagamento</span> {{efeitoPagamento.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.quantidade">Quantidade</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.quantidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.montante">Montante</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.montante}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.desconto">Desconto</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.desconto}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.multa">Multa</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.multa}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.juro">Juro</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.juro}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.data">Data</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.vencimento">Vencimento</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.vencimento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.quitado">Quitado</span></dt>
+                <dd>
+                    <span>{{efeitoPagamento.quitado}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.deposito">Deposito</span></dt>
+                <dd>
+                    <span *ngFor="let deposito of efeitoPagamento.depositos; let last = last">
+                        <a [routerLink]="['/deposito', deposito?.id, 'view' ]">{{deposito.numero}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.emolumento">Emolumento</span></dt>
+                <dd>
+                    <div *ngIf="efeitoPagamento.emolumentoId">
+                        <a [routerLink]="['/emolumento', efeitoPagamento.emolumentoId, 'view']">{{efeitoPagamento.emolumentoNome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoEfeitoPagamento.pagamento">Pagamento</span></dt>
+                <dd>
+                    <div *ngIf="efeitoPagamento.pagamentoId">
+                        <a [routerLink]="['/pagamento-emolumento', efeitoPagamento.pagamentoId, 'view']">{{efeitoPagamento.pagamentoNumero}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/efeito-pagamento', efeitoPagamento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

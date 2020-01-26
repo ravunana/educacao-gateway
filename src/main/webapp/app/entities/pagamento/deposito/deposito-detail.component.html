@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="deposito">
+            <h2><span jhiTranslate="educacaoApp.pagamentoDeposito.detail.title">Deposito</span> {{deposito.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.numero">Numero</span></dt>
+                <dd>
+                    <span>{{deposito.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.dataDeposito">Data Deposito</span></dt>
+                <dd>
+                    <span>{{deposito.dataDeposito}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.montante">Montante</span></dt>
+                <dd>
+                    <span>{{deposito.montante}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.data">Data</span></dt>
+                <dd>
+                    <span>{{deposito.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.anexo">Anexo</span></dt>
+                <dd>
+                    <div *ngIf="deposito.anexo">
+                        <a (click)="openFile(deposito.anexoContentType!, deposito.anexo)" jhiTranslate="entity.action.open">open</a>
+                        {{deposito.anexoContentType}}, {{byteSize(deposito.anexo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.numeroProcesso">Numero Processo</span></dt>
+                <dd>
+                    <span>{{deposito.numeroProcesso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.meioLiquidacao">Meio Liquidacao</span></dt>
+                <dd>
+                    <span>{{deposito.meioLiquidacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoDeposito.bancoCaixa">Banco Caixa</span></dt>
+                <dd>
+                    <div *ngIf="deposito.bancoCaixaId">
+                        <a [routerLink]="['/caixa', deposito.bancoCaixaId, 'view']">{{deposito.bancoCaixaDescricao}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/deposito', deposito.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="provaAptidaoProfissional">
+            <h2><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.detail.title">Prova Aptidao Profissional</span> {{provaAptidaoProfissional.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.numeroProcesso">Numero Processo</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.numeroProcesso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.nomeAluno">Nome Aluno</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.nomeAluno}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.livroRegistro">Livro Registro</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.livroRegistro}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.folhaRegistro">Folha Registro</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.folhaRegistro}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.temaProjectoTecnologio">Tema Projecto Tecnologio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.temaProjectoTecnologio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.notaProjectoTecnologio">Nota Projecto Tecnologio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.notaProjectoTecnologio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.dataDefesa">Data Defesa</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.dataDefesa}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.localEstagio">Local Estagio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.localEstagio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.aproveitamentoEstagio">Aproveitamento Estagio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.aproveitamentoEstagio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.inicioEstagio">Inicio Estagio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.inicioEstagio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.finalEstagio">Final Estagio</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.finalEstagio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProvaAptidaoProfissional.data">Data</span></dt>
+                <dd>
+                    <span>{{provaAptidaoProfissional.data}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prova-aptidao-profissional', provaAptidaoProfissional.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

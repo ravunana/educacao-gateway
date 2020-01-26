@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="rv-teste-conhecimento-heading" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.home.createOrEditLabel">Create or edit a Teste Conhecimento</h2>
+            <div>
+                <rv-alert-error></rv-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.categoria" for="field_categoria">Categoria</label>
+                    <input type="text" class="form-control" name="categoria" id="field_categoria"
+                           formControlName="categoria"/>
+                    <div *ngIf="editForm.get('categoria')!.invalid && (editForm.get('categoria')!.dirty || editForm.get('categoria')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categoria')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.periodoLectivo" for="field_periodoLectivo">Periodo Lectivo</label>
+                    <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                           formControlName="periodoLectivo"/>
+                    <div *ngIf="editForm.get('periodoLectivo')!.invalid && (editForm.get('periodoLectivo')!.dirty || editForm.get('periodoLectivo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('periodoLectivo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.duracao" for="field_duracao">Duracao</label>
+                    <input type="number" class="form-control" name="duracao" id="field_duracao"
+                           formControlName="duracao"/>
+                    <div *ngIf="editForm.get('duracao')!.invalid && (editForm.get('duracao')!.dirty || editForm.get('duracao')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('duracao')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('duracao')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('duracao')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.data" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" formControlName="data" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.curriculo" for="field_curriculo">Curriculo</label>
+                    <select class="form-control" id="field_curriculo" name="curriculo" formControlName="curriculoId">
+                        <option *ngIf="!editForm.get('curriculoId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="planoCurricularOption.id" *ngFor="let planoCurricularOption of planocurriculars; trackBy: trackById">{{planoCurricularOption.descricao}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('curriculoId')!.invalid && (editForm.get('curriculoId')!.dirty || editForm.get('curriculoId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('curriculoId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.turma" for="field_turma">Turma</label>
+                    <select class="form-control" id="field_turma" name="turma" formControlName="turmaId">
+                        <option *ngIf="!editForm.get('turmaId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="turmaOption.id" *ngFor="let turmaOption of turmas; trackBy: trackById">{{turmaOption.descricao}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('turmaId')!.invalid && (editForm.get('turmaId')!.dirty || editForm.get('turmaId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('turmaId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.professor" for="field_professor">Professor</label>
+                    <select class="form-control" id="field_professor" name="professor" formControlName="professorId">
+                        <option *ngIf="!editForm.get('professorId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackById">{{professorOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('professorId')!.invalid && (editForm.get('professorId')!.dirty || editForm.get('professorId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('professorId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.pedagogicoNota.home.title">Notas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-nota" [routerLink]="['/nota/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.pedagogicoNota.home.createLabel">
+            Create a new Nota
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.pedagogicoNota.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="notas?.length === 0">
+        <span jhiTranslate="educacaoApp.pedagogicoNota.home.notFound">No notas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="notas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroProcesso"><span jhiTranslate="educacaoApp.pedagogicoNota.numeroProcesso">Numero Processo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nomeAluno"><span jhiTranslate="educacaoApp.pedagogicoNota.nomeAluno">Nome Aluno</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="disciplina"><span jhiTranslate="educacaoApp.pedagogicoNota.disciplina">Disciplina</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="peridoLectivo"><span jhiTranslate="educacaoApp.pedagogicoNota.peridoLectivo">Perido Lectivo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="anoLectivo"><span jhiTranslate="educacaoApp.pedagogicoNota.anoLectivo">Ano Lectivo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="faltaJustificada"><span jhiTranslate="educacaoApp.pedagogicoNota.faltaJustificada">Falta Justificada</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="faltaInjustificada"><span jhiTranslate="educacaoApp.pedagogicoNota.faltaInjustificada">Falta Injustificada</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="avaliacaoContinuca"><span jhiTranslate="educacaoApp.pedagogicoNota.avaliacaoContinuca">Avaliacao Continuca</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="primeiraProva"><span jhiTranslate="educacaoApp.pedagogicoNota.primeiraProva">Primeira Prova</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="segundaProva"><span jhiTranslate="educacaoApp.pedagogicoNota.segundaProva">Segunda Prova</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exame"><span jhiTranslate="educacaoApp.pedagogicoNota.exame">Exame</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="recurso"><span jhiTranslate="educacaoApp.pedagogicoNota.recurso">Recurso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exameEspecial"><span jhiTranslate="educacaoApp.pedagogicoNota.exameEspecial">Exame Especial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="prova"><span jhiTranslate="educacaoApp.pedagogicoNota.prova">Prova</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="situacao"><span jhiTranslate="educacaoApp.pedagogicoNota.situacao">Situacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="turmaDescricao"><span jhiTranslate="educacaoApp.pedagogicoNota.turma">Turma</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="curriculoDescricao"><span jhiTranslate="educacaoApp.pedagogicoNota.curriculo">Curriculo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="professorNome"><span jhiTranslate="educacaoApp.pedagogicoNota.professor">Professor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let nota of notas ;trackBy: trackId">
+                <td><a [routerLink]="['/nota', nota.id, 'view' ]">{{nota.id}}</a></td>
+                <td>{{nota.numeroProcesso}}</td>
+                <td>{{nota.nomeAluno}}</td>
+                <td>{{nota.disciplina}}</td>
+                <td>{{nota.peridoLectivo}}</td>
+                <td>{{nota.anoLectivo}}</td>
+                <td>{{nota.faltaJustificada}}</td>
+                <td>{{nota.faltaInjustificada}}</td>
+                <td>{{nota.avaliacaoContinuca}}</td>
+                <td>{{nota.primeiraProva}}</td>
+                <td>{{nota.segundaProva}}</td>
+                <td>{{nota.exame}}</td>
+                <td>{{nota.recurso}}</td>
+                <td>{{nota.exameEspecial}}</td>
+                <td>
+                    <a *ngIf="nota.prova" (click)="openFile(nota.provaContentType, nota.prova)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="nota.prova">{{nota.provaContentType}}, {{byteSize(nota.prova)}}</span>
+                </td>
+                <td>{{nota.situacao}}</td>
+                <td>
+                    <div *ngIf="nota.turmaId">
+                        <a [routerLink]="['/turma', nota.turmaId , 'view' ]" >{{nota.turmaDescricao}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="nota.curriculoId">
+                        <a [routerLink]="['/plano-curricular', nota.curriculoId , 'view' ]" >{{nota.curriculoDescricao}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="nota.professorId">
+                        <a [routerLink]="['/professor', nota.professorId , 'view' ]" >{{nota.professorNome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/nota', nota.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/nota', nota.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(nota)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="notas?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

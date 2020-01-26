@@ -1,0 +1,32 @@
+{
+    "name": "EntidadeSistema",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "lookup",
+            "otherEntityRelationshipName": "entidade",
+            "relationshipName": "lookup"
+        }
+    ],
+    "changelogDate": "20200126140933",
+    "entityTableName": "entidade_sistema",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

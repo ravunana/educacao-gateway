@@ -1,0 +1,102 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.home.title">Teste Conhecimentos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-teste-conhecimento" [routerLink]="['/teste-conhecimento/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.home.createLabel">
+            Create a new Teste Conhecimento
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.pedagogicoTesteConhecimento.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="testeConhecimentos?.length === 0">
+        <span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.home.notFound">No testeConhecimentos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="testeConhecimentos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="categoria"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.categoria">Categoria</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="periodoLectivo"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.periodoLectivo">Periodo Lectivo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="duracao"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.duracao">Duracao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="data"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.data">Data</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="curriculoDescricao"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.curriculo">Curriculo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="turmaDescricao"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.turma">Turma</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="professorNome"><span jhiTranslate="educacaoApp.pedagogicoTesteConhecimento.professor">Professor</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let testeConhecimento of testeConhecimentos ;trackBy: trackId">
+                <td><a [routerLink]="['/teste-conhecimento', testeConhecimento.id, 'view' ]">{{testeConhecimento.id}}</a></td>
+                <td>{{testeConhecimento.categoria}}</td>
+                <td>{{testeConhecimento.periodoLectivo}}</td>
+                <td>{{testeConhecimento.duracao}}</td>
+                <td>{{testeConhecimento.data | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="testeConhecimento.curriculoId">
+                        <a [routerLink]="['/plano-curricular', testeConhecimento.curriculoId , 'view' ]" >{{testeConhecimento.curriculoDescricao}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="testeConhecimento.turmaId">
+                        <a [routerLink]="['/turma', testeConhecimento.turmaId , 'view' ]" >{{testeConhecimento.turmaDescricao}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="testeConhecimento.professorId">
+                        <a [routerLink]="['/professor', testeConhecimento.professorId , 'view' ]" >{{testeConhecimento.professorNome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/teste-conhecimento', testeConhecimento.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/teste-conhecimento', testeConhecimento.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(testeConhecimento)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="testeConhecimentos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

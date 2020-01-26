@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chamada">
+            <h2><span jhiTranslate="educacaoApp.pedagogicoChamada.detail.title">Chamada</span> {{chamada.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pedagogicoChamada.data">Data</span></dt>
+                <dd>
+                    <span>{{chamada.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoChamada.presente">Presente</span></dt>
+                <dd>
+                    <span>{{chamada.presente}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoChamada.numeroProcesso">Numero Processo</span></dt>
+                <dd>
+                    <span>{{chamada.numeroProcesso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoChamada.aula">Aula</span></dt>
+                <dd>
+                    <div *ngIf="chamada.aulaId">
+                        <a [routerLink]="['/aula', chamada.aulaId, 'view']">{{chamada.aulaData}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/chamada', chamada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

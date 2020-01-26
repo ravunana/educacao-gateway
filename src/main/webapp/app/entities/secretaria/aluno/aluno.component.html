@@ -1,0 +1,173 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.secretariaAluno.home.title">Alunos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-aluno" [routerLink]="['/aluno/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.secretariaAluno.home.createLabel">
+            Create a new Aluno
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.secretariaAluno.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="alunos?.length === 0">
+        <span jhiTranslate="educacaoApp.secretariaAluno.home.notFound">No alunos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="alunos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nome"><span jhiTranslate="educacaoApp.secretariaAluno.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sexo"><span jhiTranslate="educacaoApp.secretariaAluno.sexo">Sexo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fotografia"><span jhiTranslate="educacaoApp.secretariaAluno.fotografia">Fotografia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="pai"><span jhiTranslate="educacaoApp.secretariaAluno.pai">Pai</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="mae"><span jhiTranslate="educacaoApp.secretariaAluno.mae">Mae</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nascimento"><span jhiTranslate="educacaoApp.secretariaAluno.nascimento">Nascimento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nacionalidade"><span jhiTranslate="educacaoApp.secretariaAluno.nacionalidade">Nacionalidade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="naturalidade"><span jhiTranslate="educacaoApp.secretariaAluno.naturalidade">Naturalidade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contacto"><span jhiTranslate="educacaoApp.secretariaAluno.contacto">Contacto</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="email"><span jhiTranslate="educacaoApp.secretariaAluno.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tipoDocumento"><span jhiTranslate="educacaoApp.secretariaAluno.tipoDocumento">Tipo Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroDocumento"><span jhiTranslate="educacaoApp.secretariaAluno.numeroDocumento">Numero Documento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="emissao"><span jhiTranslate="educacaoApp.secretariaAluno.emissao">Emissao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="validade"><span jhiTranslate="educacaoApp.secretariaAluno.validade">Validade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="localEmissao"><span jhiTranslate="educacaoApp.secretariaAluno.localEmissao">Local Emissao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nif"><span jhiTranslate="educacaoApp.secretariaAluno.nif">Nif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="provincia"><span jhiTranslate="educacaoApp.secretariaAluno.provincia">Provincia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="municipio"><span jhiTranslate="educacaoApp.secretariaAluno.municipio">Municipio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bairro"><span jhiTranslate="educacaoApp.secretariaAluno.bairro">Bairro</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="rua"><span jhiTranslate="educacaoApp.secretariaAluno.rua">Rua</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="quarteirao"><span jhiTranslate="educacaoApp.secretariaAluno.quarteirao">Quarteirao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroPorta"><span jhiTranslate="educacaoApp.secretariaAluno.numeroPorta">Numero Porta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fazEducacaoFisica"><span jhiTranslate="educacaoApp.secretariaAluno.fazEducacaoFisica">Faz Educacao Fisica</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="grupoSanguinio"><span jhiTranslate="educacaoApp.secretariaAluno.grupoSanguinio">Grupo Sanguinio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="autorizaMedicamento"><span jhiTranslate="educacaoApp.secretariaAluno.autorizaMedicamento">Autoriza Medicamento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="altura"><span jhiTranslate="educacaoApp.secretariaAluno.altura">Altura</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="peso"><span jhiTranslate="educacaoApp.secretariaAluno.peso">Peso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nomeMedico"><span jhiTranslate="educacaoApp.secretariaAluno.nomeMedico">Nome Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactoMedico"><span jhiTranslate="educacaoApp.secretariaAluno.contactoMedico">Contacto Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="desmaioConstante"><span jhiTranslate="educacaoApp.secretariaAluno.desmaioConstante">Desmaio Constante</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="alergia"><span jhiTranslate="educacaoApp.secretariaAluno.alergia">Alergia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dificiencia"><span jhiTranslate="educacaoApp.secretariaAluno.dificiencia">Dificiencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="anoConclusao"><span jhiTranslate="educacaoApp.secretariaAluno.anoConclusao">Ano Conclusao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="situacaoAnterior"><span jhiTranslate="educacaoApp.secretariaAluno.situacaoAnterior">Situacao Anterior</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="meioTransporte"><span jhiTranslate="educacaoApp.secretariaAluno.meioTransporte">Meio Transporte</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="escolaAnterior"><span jhiTranslate="educacaoApp.secretariaAluno.escolaAnterior">Escola Anterior</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="classeAnterior"><span jhiTranslate="educacaoApp.secretariaAluno.classeAnterior">Classe Anterior</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cursoAnterior"><span jhiTranslate="educacaoApp.secretariaAluno.cursoAnterior">Curso Anterior</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="data"><span jhiTranslate="educacaoApp.secretariaAluno.data">Data</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroProcesso"><span jhiTranslate="educacaoApp.secretariaAluno.numeroProcesso">Numero Processo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="transferido"><span jhiTranslate="educacaoApp.secretariaAluno.transferido">Transferido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="observacao"><span jhiTranslate="educacaoApp.secretariaAluno.observacao">Observacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="situacaoAtual"><span jhiTranslate="educacaoApp.secretariaAluno.situacaoAtual">Situacao Atual</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="encarregadoNome"><span jhiTranslate="educacaoApp.secretariaAluno.encarregado">Encarregado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let aluno of alunos ;trackBy: trackId">
+                <td><a [routerLink]="['/aluno', aluno.id, 'view' ]">{{aluno.id}}</a></td>
+                <td>{{aluno.nome}}</td>
+                <td>{{aluno.sexo}}</td>
+                <td>
+                    <a *ngIf="aluno.fotografia" (click)="openFile(aluno.fotografiaContentType, aluno.fotografia)">
+                        <img [src]="'data:' + aluno.fotografiaContentType + ';base64,' + aluno.fotografia" style="max-height: 30px;" alt="aluno image"/>
+                    </a>
+                    <span *ngIf="aluno.fotografia">{{aluno.fotografiaContentType}}, {{byteSize(aluno.fotografia)}}</span>
+                </td>
+                <td>{{aluno.pai}}</td>
+                <td>{{aluno.mae}}</td>
+                <td>{{aluno.nascimento | date:'mediumDate'}}</td>
+                <td>{{aluno.nacionalidade}}</td>
+                <td>{{aluno.naturalidade}}</td>
+                <td>{{aluno.contacto}}</td>
+                <td>{{aluno.email}}</td>
+                <td>{{aluno.tipoDocumento}}</td>
+                <td>{{aluno.numeroDocumento}}</td>
+                <td>{{aluno.emissao | date:'mediumDate'}}</td>
+                <td>{{aluno.validade | date:'mediumDate'}}</td>
+                <td>{{aluno.localEmissao}}</td>
+                <td>{{aluno.nif}}</td>
+                <td>{{aluno.provincia}}</td>
+                <td>{{aluno.municipio}}</td>
+                <td>{{aluno.bairro}}</td>
+                <td>{{aluno.rua}}</td>
+                <td>{{aluno.quarteirao}}</td>
+                <td>{{aluno.numeroPorta}}</td>
+                <td>{{aluno.fazEducacaoFisica}}</td>
+                <td>{{aluno.grupoSanguinio}}</td>
+                <td>{{aluno.autorizaMedicamento}}</td>
+                <td>{{aluno.altura}}</td>
+                <td>{{aluno.peso}}</td>
+                <td>{{aluno.nomeMedico}}</td>
+                <td>{{aluno.contactoMedico}}</td>
+                <td>{{aluno.desmaioConstante}}</td>
+                <td>{{aluno.alergia}}</td>
+                <td>{{aluno.dificiencia}}</td>
+                <td>{{aluno.anoConclusao}}</td>
+                <td>{{aluno.situacaoAnterior}}</td>
+                <td>{{aluno.meioTransporte}}</td>
+                <td>{{aluno.escolaAnterior}}</td>
+                <td>{{aluno.classeAnterior}}</td>
+                <td>{{aluno.cursoAnterior}}</td>
+                <td>{{aluno.data | date:'medium'}}</td>
+                <td>{{aluno.numeroProcesso}}</td>
+                <td>{{aluno.transferido}}</td>
+                <td>{{aluno.observacao}}</td>
+                <td>{{aluno.situacaoAtual}}</td>
+                <td>
+                    <div *ngIf="aluno.encarregadoId">
+                        <a [routerLink]="['/encarregado-educao', aluno.encarregadoId , 'view' ]" >{{aluno.encarregadoNome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/aluno', aluno.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/aluno', aluno.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(aluno)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="alunos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

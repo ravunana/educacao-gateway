@@ -1,0 +1,35 @@
+{
+  "educacaoApp": {
+    "pedagogicoHorario": {
+      "home": {
+        "title": "Horarios",
+        "createLabel": "Criar novo(a) Horario",
+        "createOrEditLabel": "Criar ou editar Horario",
+        "search": "Procurar por Horario",
+        "notFound": "Nenhum Horarios encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Horario {{ id }}?"
+      },
+      "detail": {
+        "title": "Horario"
+      },
+      "inicio": "Inicio",
+      "fim": "Fim",
+      "data": "Data",
+      "anoLectivo": "Ano Lectivo",
+      "diaSemana": "Dia Semana",
+      "categoria": "Categoria",
+      "turma": "Turma",
+      "professor": "Professor",
+      "curriculo": "Curriculo"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoHorario": {
+      "created": "Um novo Horario foi criado com o identificador {{ param }}",
+      "updated": "Horario com identificador {{ param }} foi actualizado",
+      "deleted": "Horario com identificador {{ param }} foi eliminado"
+    }
+  }
+}

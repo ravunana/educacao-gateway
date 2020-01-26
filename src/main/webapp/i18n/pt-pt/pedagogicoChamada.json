@@ -1,0 +1,30 @@
+{
+  "educacaoApp": {
+    "pedagogicoChamada": {
+      "home": {
+        "title": "Chamadas",
+        "createLabel": "Criar novo(a) Chamada",
+        "createOrEditLabel": "Criar ou editar Chamada",
+        "search": "Procurar por Chamada",
+        "notFound": "Nenhum Chamadas encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Chamada {{ id }}?"
+      },
+      "detail": {
+        "title": "Chamada"
+      },
+      "data": "Data",
+      "presente": "Presente",
+      "numeroProcesso": "Numero Processo",
+      "aula": "Aula"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoChamada": {
+      "created": "Um novo Chamada foi criado com o identificador {{ param }}",
+      "updated": "Chamada com identificador {{ param }} foi actualizado",
+      "deleted": "Chamada com identificador {{ param }} foi eliminado"
+    }
+  }
+}

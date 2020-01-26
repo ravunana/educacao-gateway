@@ -1,0 +1,206 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="aluno">
+            <h2><span jhiTranslate="educacaoApp.secretariaAluno.detail.title">Aluno</span> {{aluno.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.nome">Nome</span></dt>
+                <dd>
+                    <span>{{aluno.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.sexo">Sexo</span></dt>
+                <dd>
+                    <span>{{aluno.sexo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.fotografia">Fotografia</span></dt>
+                <dd>
+                    <div *ngIf="aluno.fotografia">
+                        <a (click)="openFile(aluno.fotografiaContentType!, aluno.fotografia)">
+                            <img [src]="'data:' + aluno.fotografiaContentType + ';base64,' + aluno.fotografia" style="max-width: 100%;" alt="aluno image"/>
+                        </a>
+                        {{aluno.fotografiaContentType}}, {{byteSize(aluno.fotografia)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.pai">Pai</span></dt>
+                <dd>
+                    <span>{{aluno.pai}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.mae">Mae</span></dt>
+                <dd>
+                    <span>{{aluno.mae}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.nascimento">Nascimento</span></dt>
+                <dd>
+                    <span>{{aluno.nascimento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.nacionalidade">Nacionalidade</span></dt>
+                <dd>
+                    <span>{{aluno.nacionalidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.naturalidade">Naturalidade</span></dt>
+                <dd>
+                    <span>{{aluno.naturalidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.contacto">Contacto</span></dt>
+                <dd>
+                    <span>{{aluno.contacto}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.email">Email</span></dt>
+                <dd>
+                    <span>{{aluno.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.tipoDocumento">Tipo Documento</span></dt>
+                <dd>
+                    <span>{{aluno.tipoDocumento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.numeroDocumento">Numero Documento</span></dt>
+                <dd>
+                    <span>{{aluno.numeroDocumento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.emissao">Emissao</span></dt>
+                <dd>
+                    <span>{{aluno.emissao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.validade">Validade</span></dt>
+                <dd>
+                    <span>{{aluno.validade}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.localEmissao">Local Emissao</span></dt>
+                <dd>
+                    <span>{{aluno.localEmissao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.nif">Nif</span></dt>
+                <dd>
+                    <span>{{aluno.nif}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.provincia">Provincia</span></dt>
+                <dd>
+                    <span>{{aluno.provincia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.municipio">Municipio</span></dt>
+                <dd>
+                    <span>{{aluno.municipio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{aluno.bairro}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.rua">Rua</span></dt>
+                <dd>
+                    <span>{{aluno.rua}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.quarteirao">Quarteirao</span></dt>
+                <dd>
+                    <span>{{aluno.quarteirao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.numeroPorta">Numero Porta</span></dt>
+                <dd>
+                    <span>{{aluno.numeroPorta}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.fazEducacaoFisica">Faz Educacao Fisica</span></dt>
+                <dd>
+                    <span>{{aluno.fazEducacaoFisica}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.grupoSanguinio">Grupo Sanguinio</span></dt>
+                <dd>
+                    <span>{{aluno.grupoSanguinio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.autorizaMedicamento">Autoriza Medicamento</span></dt>
+                <dd>
+                    <span>{{aluno.autorizaMedicamento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.altura">Altura</span></dt>
+                <dd>
+                    <span>{{aluno.altura}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.peso">Peso</span></dt>
+                <dd>
+                    <span>{{aluno.peso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.nomeMedico">Nome Medico</span></dt>
+                <dd>
+                    <span>{{aluno.nomeMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.contactoMedico">Contacto Medico</span></dt>
+                <dd>
+                    <span>{{aluno.contactoMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.desmaioConstante">Desmaio Constante</span></dt>
+                <dd>
+                    <span>{{aluno.desmaioConstante}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.alergia">Alergia</span></dt>
+                <dd>
+                    <span>{{aluno.alergia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.dificiencia">Dificiencia</span></dt>
+                <dd>
+                    <span>{{aluno.dificiencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.anoConclusao">Ano Conclusao</span></dt>
+                <dd>
+                    <span>{{aluno.anoConclusao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.situacaoAnterior">Situacao Anterior</span></dt>
+                <dd>
+                    <span>{{aluno.situacaoAnterior}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.meioTransporte">Meio Transporte</span></dt>
+                <dd>
+                    <span>{{aluno.meioTransporte}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.escolaAnterior">Escola Anterior</span></dt>
+                <dd>
+                    <span>{{aluno.escolaAnterior}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.classeAnterior">Classe Anterior</span></dt>
+                <dd>
+                    <span>{{aluno.classeAnterior}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.cursoAnterior">Curso Anterior</span></dt>
+                <dd>
+                    <span>{{aluno.cursoAnterior}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.data">Data</span></dt>
+                <dd>
+                    <span>{{aluno.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.numeroProcesso">Numero Processo</span></dt>
+                <dd>
+                    <span>{{aluno.numeroProcesso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.transferido">Transferido</span></dt>
+                <dd>
+                    <span>{{aluno.transferido}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.observacao">Observacao</span></dt>
+                <dd>
+                    <span>{{aluno.observacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.situacaoAtual">Situacao Atual</span></dt>
+                <dd>
+                    <span>{{aluno.situacaoAtual}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaAluno.encarregado">Encarregado</span></dt>
+                <dd>
+                    <div *ngIf="aluno.encarregadoId">
+                        <a [routerLink]="['/encarregado-educao', aluno.encarregadoId, 'view']">{{aluno.encarregadoNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/aluno', aluno.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

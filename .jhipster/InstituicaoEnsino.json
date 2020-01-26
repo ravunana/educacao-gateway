@@ -1,0 +1,152 @@
+{
+    "name": "InstituicaoEnsino",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "logotipo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fundacao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fundador",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "unique",
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dimensao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sede",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoVinculo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unidadePagadora",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoInstalacao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "provincia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "municipio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bairro",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rua",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "quarteirao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "numeroPorta",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "instituicaoEnsino",
+            "otherEntityRelationshipName": "hierarquia",
+            "relationshipName": "instituicaoEnsino"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contactoInstituicao",
+            "otherEntityRelationshipName": "instituicaoEnsino",
+            "relationshipName": "contactoInstituicao"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "licencaSoftware",
+            "otherEntityRelationshipName": "instituicaoEnsino",
+            "relationshipName": "licencaSoftware"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "assinaturaDigital",
+            "otherEntityRelationshipName": "instituicao",
+            "relationshipName": "assinaturaDigital"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instituicaoEnsino",
+            "otherEntityRelationshipName": "instituicaoEnsino",
+            "relationshipName": "hierarquia",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20200126140935",
+    "entityTableName": "instituicao_ensino",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

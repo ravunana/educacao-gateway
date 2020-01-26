@@ -1,0 +1,32 @@
+{
+  "educacaoApp": {
+    "pagamentoCaixa": {
+      "home": {
+        "title": "Caixas",
+        "createLabel": "Criar novo(a) Caixa",
+        "createOrEditLabel": "Criar ou editar Caixa",
+        "search": "Procurar por Caixa",
+        "notFound": "Nenhum Caixas encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Caixa {{ id }}?"
+      },
+      "detail": {
+        "title": "Caixa"
+      },
+      "descricao": "Descricao",
+      "proprietario": "Proprietario",
+      "numeroConta": "Numero Conta",
+      "iban": "Iban",
+      "ativo": "Ativo",
+      "deposito": "Deposito"
+    }
+  },
+  "pagamentoApp": {
+    "pagamentoCaixa": {
+      "created": "Um novo Caixa foi criado com o identificador {{ param }}",
+      "updated": "Caixa com identificador {{ param }} foi actualizado",
+      "deleted": "Caixa com identificador {{ param }} foi eliminado"
+    }
+  }
+}

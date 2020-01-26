@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="instituicaoEnsino">
+            <h2><span jhiTranslate="educacaoApp.instituicaoEnsino.detail.title">Instituicao Ensino</span> {{instituicaoEnsino.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.nome">Nome</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.logotipo">Logotipo</span></dt>
+                <dd>
+                    <div *ngIf="instituicaoEnsino.logotipo">
+                        <a (click)="openFile(instituicaoEnsino.logotipoContentType!, instituicaoEnsino.logotipo)">
+                            <img [src]="'data:' + instituicaoEnsino.logotipoContentType + ';base64,' + instituicaoEnsino.logotipo" style="max-width: 100%;" alt="instituicaoEnsino image"/>
+                        </a>
+                        {{instituicaoEnsino.logotipoContentType}}, {{byteSize(instituicaoEnsino.logotipo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.fundacao">Fundacao</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.fundacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.fundador">Fundador</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.fundador}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.numero">Numero</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.dimensao">Dimensao</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.dimensao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.sede">Sede</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.sede}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.tipoVinculo">Tipo Vinculo</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.tipoVinculo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.unidadePagadora">Unidade Pagadora</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.unidadePagadora}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.tipoInstalacao">Tipo Instalacao</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.tipoInstalacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.provincia">Provincia</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.provincia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.municipio">Municipio</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.municipio}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.bairro}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.rua">Rua</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.rua}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.quarteirao">Quarteirao</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.quarteirao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.numeroPorta">Numero Porta</span></dt>
+                <dd>
+                    <span>{{instituicaoEnsino.numeroPorta}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.instituicaoEnsino.hierarquia">Hierarquia</span></dt>
+                <dd>
+                    <div *ngIf="instituicaoEnsino.hierarquiaId">
+                        <a [routerLink]="['/instituicao-ensino', instituicaoEnsino.hierarquiaId, 'view']">{{instituicaoEnsino.hierarquiaNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/instituicao-ensino', instituicaoEnsino.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

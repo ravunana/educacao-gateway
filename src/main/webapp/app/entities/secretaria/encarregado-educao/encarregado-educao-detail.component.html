@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="encarregadoEducao">
+            <h2><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.detail.title">Encarregado Educao</span> {{encarregadoEducao.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.nome">Nome</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.sexo">Sexo</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.sexo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.nif">Nif</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.nif}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.numeroIdentificacao">Numero Identificacao</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.numeroIdentificacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.residencia">Residencia</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.residencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoPessoal">Contacto Pessoal</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.contactoPessoal}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoTrabalho">Contacto Trabalho</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.contactoTrabalho}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.contactoResidencia">Contacto Residencia</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.contactoResidencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.email">Email</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.localTrabalho">Local Trabalho</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.localTrabalho}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.cargo">Cargo</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.cargo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.salario">Salario</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.salario}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaEncarregadoEducao.grauParentesco">Grau Parentesco</span></dt>
+                <dd>
+                    <span>{{encarregadoEducao.grauParentesco}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/encarregado-educao', encarregadoEducao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contactoInstituicao">
+            <h2><span jhiTranslate="educacaoApp.contactoInstituicao.detail.title">Contacto Instituicao</span> {{contactoInstituicao.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.contactoInstituicao.tipoContacto">Tipo Contacto</span></dt>
+                <dd>
+                    <span>{{contactoInstituicao.tipoContacto}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.contactoInstituicao.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{contactoInstituicao.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.contactoInstituicao.contacto">Contacto</span></dt>
+                <dd>
+                    <span>{{contactoInstituicao.contacto}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.contactoInstituicao.mostrarDocumento">Mostrar Documento</span></dt>
+                <dd>
+                    <span>{{contactoInstituicao.mostrarDocumento}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.contactoInstituicao.instituicaoEnsino">Instituicao Ensino</span></dt>
+                <dd>
+                    <div *ngIf="contactoInstituicao.instituicaoEnsinoId">
+                        <a [routerLink]="['/instituicao-ensino', contactoInstituicao.instituicaoEnsinoId, 'view']">{{contactoInstituicao.instituicaoEnsinoNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contacto-instituicao', contactoInstituicao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

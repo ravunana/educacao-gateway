@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="caixa">
+            <h2><span jhiTranslate="educacaoApp.pagamentoCaixa.detail.title">Caixa</span> {{caixa.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pagamentoCaixa.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{caixa.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoCaixa.proprietario">Proprietario</span></dt>
+                <dd>
+                    <span>{{caixa.proprietario}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoCaixa.numeroConta">Numero Conta</span></dt>
+                <dd>
+                    <span>{{caixa.numeroConta}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoCaixa.iban">Iban</span></dt>
+                <dd>
+                    <span>{{caixa.iban}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pagamentoCaixa.ativo">Ativo</span></dt>
+                <dd>
+                    <span>{{caixa.ativo}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/caixa', caixa.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

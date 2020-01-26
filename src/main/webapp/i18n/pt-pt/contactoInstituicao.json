@@ -1,0 +1,27 @@
+{
+  "educacaoApp": {
+    "contactoInstituicao": {
+      "home": {
+        "title": "Contacto Instituicaos",
+        "createLabel": "Criar novo(a) Contacto Instituicao",
+        "createOrEditLabel": "Criar ou editar Contacto Instituicao",
+        "search": "Procurar por Contacto Instituicao",
+        "notFound": "Nenhum Contacto Instituicaos encontrado"
+      },
+      "created": "Um novo Contacto Instituicao foi criado com o identificador {{ param }}",
+      "updated": "Contacto Instituicao com identificador {{ param }} foi actualizado",
+      "deleted": "Contacto Instituicao com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Contacto Instituicao {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacto Instituicao"
+      },
+      "tipoContacto": "Tipo Contacto",
+      "descricao": "Descricao",
+      "contacto": "Contacto",
+      "mostrarDocumento": "Mostrar Documento",
+      "instituicaoEnsino": "Instituicao Ensino"
+    }
+  }
+}

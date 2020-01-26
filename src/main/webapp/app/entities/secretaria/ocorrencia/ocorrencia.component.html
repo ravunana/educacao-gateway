@@ -1,0 +1,96 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.secretariaOcorrencia.home.title">Ocorrencias</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ocorrencia" [routerLink]="['/ocorrencia/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.secretariaOcorrencia.home.createLabel">
+            Create a new Ocorrencia
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.secretariaOcorrencia.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="ocorrencias?.length === 0">
+        <span jhiTranslate="educacaoApp.secretariaOcorrencia.home.notFound">No ocorrencias found</span>
+    </div>
+    <div class="table-responsive" *ngIf="ocorrencias?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tipoOcorrencia"><span jhiTranslate="educacaoApp.secretariaOcorrencia.tipoOcorrencia">Tipo Ocorrencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="data"><span jhiTranslate="educacaoApp.secretariaOcorrencia.data">Data</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numero"><span jhiTranslate="educacaoApp.secretariaOcorrencia.numero">Numero</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="reportarEncarregado"><span jhiTranslate="educacaoApp.secretariaOcorrencia.reportarEncarregado">Reportar Encarregado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="de"><span jhiTranslate="educacaoApp.secretariaOcorrencia.de">De</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="ate"><span jhiTranslate="educacaoApp.secretariaOcorrencia.ate">Ate</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descricao"><span jhiTranslate="educacaoApp.secretariaOcorrencia.descricao">Descricao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="matriculaNumeroProcesso"><span jhiTranslate="educacaoApp.secretariaOcorrencia.matricula">Matricula</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ocorrencia of ocorrencias ;trackBy: trackId">
+                <td><a [routerLink]="['/ocorrencia', ocorrencia.id, 'view' ]">{{ocorrencia.id}}</a></td>
+                <td>{{ocorrencia.tipoOcorrencia}}</td>
+                <td>{{ocorrencia.data | date:'medium'}}</td>
+                <td>{{ocorrencia.numero}}</td>
+                <td>{{ocorrencia.reportarEncarregado}}</td>
+                <td>{{ocorrencia.de | date:'mediumDate'}}</td>
+                <td>{{ocorrencia.ate | date:'mediumDate'}}</td>
+                <td>{{ocorrencia.descricao}}</td>
+                <td>
+                    <div *ngIf="ocorrencia.matriculaId">
+                        <a [routerLink]="['/aluno', ocorrencia.matriculaId , 'view' ]" >{{ocorrencia.matriculaNumeroProcesso}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/ocorrencia', ocorrencia.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ocorrencia', ocorrencia.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(ocorrencia)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="ocorrencias?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

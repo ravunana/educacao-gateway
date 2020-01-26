@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ocorrencia">
+            <h2><span jhiTranslate="educacaoApp.secretariaOcorrencia.detail.title">Ocorrencia</span> {{ocorrencia.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.tipoOcorrencia">Tipo Ocorrencia</span></dt>
+                <dd>
+                    <span>{{ocorrencia.tipoOcorrencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.data">Data</span></dt>
+                <dd>
+                    <span>{{ocorrencia.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.numero">Numero</span></dt>
+                <dd>
+                    <span>{{ocorrencia.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.reportarEncarregado">Reportar Encarregado</span></dt>
+                <dd>
+                    <span>{{ocorrencia.reportarEncarregado}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.de">De</span></dt>
+                <dd>
+                    <span>{{ocorrencia.de}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.ate">Ate</span></dt>
+                <dd>
+                    <span>{{ocorrencia.ate}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{ocorrencia.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaOcorrencia.matricula">Matricula</span></dt>
+                <dd>
+                    <div *ngIf="ocorrencia.matriculaId">
+                        <a [routerLink]="['/aluno', ocorrencia.matriculaId, 'view']">{{ocorrencia.matriculaNumeroProcesso}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ocorrencia', ocorrencia.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

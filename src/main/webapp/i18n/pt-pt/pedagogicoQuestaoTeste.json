@@ -1,0 +1,31 @@
+{
+  "educacaoApp": {
+    "pedagogicoQuestaoTeste": {
+      "home": {
+        "title": "Questao Testes",
+        "createLabel": "Criar novo(a) Questao Teste",
+        "createOrEditLabel": "Criar ou editar Questao Teste",
+        "search": "Procurar por Questao Teste",
+        "notFound": "Nenhum Questao Testes encontrado"
+      },
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Questao Teste {{ id }}?"
+      },
+      "detail": {
+        "title": "Questao Teste"
+      },
+      "grupo": "Grupo",
+      "numero": "Numero",
+      "argumento": "Argumento",
+      "questao": "Questao",
+      "teste": "Teste"
+    }
+  },
+  "pedagogicoApp": {
+    "pedagogicoQuestaoTeste": {
+      "created": "Um novo Questao Teste foi criado com o identificador {{ param }}",
+      "updated": "Questao Teste com identificador {{ param }} foi actualizado",
+      "deleted": "Questao Teste com identificador {{ param }} foi eliminado"
+    }
+  }
+}

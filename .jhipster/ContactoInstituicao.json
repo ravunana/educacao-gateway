@@ -1,0 +1,52 @@
+{
+    "name": "ContactoInstituicao",
+    "fields": [
+        {
+            "fieldName": "tipoContacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "contacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "unique",
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mostrarDocumento",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instituicaoEnsino",
+            "otherEntityRelationshipName": "contactoInstituicao",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instituicaoEnsino",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20200126140937",
+    "entityTableName": "contacto_instituicao",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planoAula">
+            <h2><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.detail.title">Plano Aula</span> {{planoAula.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.objectivoGeral">Objectivo Geral</span></dt>
+                <dd>
+                    <span>{{planoAula.objectivoGeral}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.objectivoEspecifico">Objectivo Especifico</span></dt>
+                <dd>
+                    <span>{{planoAula.objectivoEspecifico}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.conteudo">Conteudo</span></dt>
+                <dd>
+                    <span>{{planoAula.conteudo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.estrategia">Estrategia</span></dt>
+                <dd>
+                    <span>{{planoAula.estrategia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.actividades">Actividades</span></dt>
+                <dd>
+                    <span>{{planoAula.actividades}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.tempo">Tempo</span></dt>
+                <dd>
+                    <span>{{planoAula.tempo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.recursosEnsino">Recursos Ensino</span></dt>
+                <dd>
+                    <span>{{planoAula.recursosEnsino}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.avaliacao">Avaliacao</span></dt>
+                <dd>
+                    <span>{{planoAula.avaliacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.observacao">Observacao</span></dt>
+                <dd>
+                    <span>{{planoAula.observacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.bibliografia">Bibliografia</span></dt>
+                <dd>
+                    <span>{{planoAula.bibliografia}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.perfilEntrada">Perfil Entrada</span></dt>
+                <dd>
+                    <span>{{planoAula.perfilEntrada}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.perfilSaida">Perfil Saida</span></dt>
+                <dd>
+                    <span>{{planoAula.perfilSaida}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.anexo1">Anexo 1</span></dt>
+                <dd>
+                    <div *ngIf="planoAula.anexo1">
+                        <a (click)="openFile(planoAula.anexo1ContentType!, planoAula.anexo1)" jhiTranslate="entity.action.open">open</a>
+                        {{planoAula.anexo1ContentType}}, {{byteSize(planoAula.anexo1)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.turma">Turma</span></dt>
+                <dd>
+                    <span *ngFor="let turma of planoAula.turmas; let last = last">
+                        <a [routerLink]="['/turma', turma?.id, 'view' ]">{{turma.descricao}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.dosificacao">Dosificacao</span></dt>
+                <dd>
+                    <div *ngIf="planoAula.dosificacaoId">
+                        <a [routerLink]="['/dosificacao', planoAula.dosificacaoId, 'view']">{{planoAula.dosificacaoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.professor">Professor</span></dt>
+                <dd>
+                    <div *ngIf="planoAula.professorId">
+                        <a [routerLink]="['/professor', planoAula.professorId, 'view']">{{planoAula.professorNome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoPlanoAula.curriculo">Curriculo</span></dt>
+                <dd>
+                    <div *ngIf="planoAula.curriculoId">
+                        <a [routerLink]="['/plano-curricular', planoAula.curriculoId, 'view']">{{planoAula.curriculoDescricao}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plano-aula', planoAula.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

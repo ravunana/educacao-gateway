@@ -1,0 +1,119 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="educacaoApp.instituicaoEnsino.home.title">Instituicao Ensinos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-instituicao-ensino" [routerLink]="['/instituicao-ensino/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="educacaoApp.instituicaoEnsino.home.createLabel">
+            Create a new Instituicao Ensino
+            </span>
+        </button>
+    </h2>
+    <rv-alert-error></rv-alert-error>
+    <rv-alert></rv-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'educacaoApp.instituicaoEnsino.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="instituicaoEnsinos?.length === 0">
+        <span jhiTranslate="educacaoApp.instituicaoEnsino.home.notFound">No instituicaoEnsinos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="instituicaoEnsinos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nome"><span jhiTranslate="educacaoApp.instituicaoEnsino.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="logotipo"><span jhiTranslate="educacaoApp.instituicaoEnsino.logotipo">Logotipo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fundacao"><span jhiTranslate="educacaoApp.instituicaoEnsino.fundacao">Fundacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fundador"><span jhiTranslate="educacaoApp.instituicaoEnsino.fundador">Fundador</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numero"><span jhiTranslate="educacaoApp.instituicaoEnsino.numero">Numero</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dimensao"><span jhiTranslate="educacaoApp.instituicaoEnsino.dimensao">Dimensao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sede"><span jhiTranslate="educacaoApp.instituicaoEnsino.sede">Sede</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tipoVinculo"><span jhiTranslate="educacaoApp.instituicaoEnsino.tipoVinculo">Tipo Vinculo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="unidadePagadora"><span jhiTranslate="educacaoApp.instituicaoEnsino.unidadePagadora">Unidade Pagadora</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tipoInstalacao"><span jhiTranslate="educacaoApp.instituicaoEnsino.tipoInstalacao">Tipo Instalacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="provincia"><span jhiTranslate="educacaoApp.instituicaoEnsino.provincia">Provincia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="municipio"><span jhiTranslate="educacaoApp.instituicaoEnsino.municipio">Municipio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bairro"><span jhiTranslate="educacaoApp.instituicaoEnsino.bairro">Bairro</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="rua"><span jhiTranslate="educacaoApp.instituicaoEnsino.rua">Rua</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="quarteirao"><span jhiTranslate="educacaoApp.instituicaoEnsino.quarteirao">Quarteirao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="numeroPorta"><span jhiTranslate="educacaoApp.instituicaoEnsino.numeroPorta">Numero Porta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="hierarquiaNome"><span jhiTranslate="educacaoApp.instituicaoEnsino.hierarquia">Hierarquia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let instituicaoEnsino of instituicaoEnsinos ;trackBy: trackId">
+                <td><a [routerLink]="['/instituicao-ensino', instituicaoEnsino.id, 'view' ]">{{instituicaoEnsino.id}}</a></td>
+                <td>{{instituicaoEnsino.nome}}</td>
+                <td>
+                    <a *ngIf="instituicaoEnsino.logotipo" (click)="openFile(instituicaoEnsino.logotipoContentType, instituicaoEnsino.logotipo)">
+                        <img [src]="'data:' + instituicaoEnsino.logotipoContentType + ';base64,' + instituicaoEnsino.logotipo" style="max-height: 30px;" alt="instituicaoEnsino image"/>
+                    </a>
+                    <span *ngIf="instituicaoEnsino.logotipo">{{instituicaoEnsino.logotipoContentType}}, {{byteSize(instituicaoEnsino.logotipo)}}</span>
+                </td>
+                <td>{{instituicaoEnsino.fundacao | date:'mediumDate'}}</td>
+                <td>{{instituicaoEnsino.fundador}}</td>
+                <td>{{instituicaoEnsino.numero}}</td>
+                <td>{{instituicaoEnsino.dimensao}}</td>
+                <td>{{instituicaoEnsino.sede}}</td>
+                <td>{{instituicaoEnsino.tipoVinculo}}</td>
+                <td>{{instituicaoEnsino.unidadePagadora}}</td>
+                <td>{{instituicaoEnsino.tipoInstalacao}}</td>
+                <td>{{instituicaoEnsino.provincia}}</td>
+                <td>{{instituicaoEnsino.municipio}}</td>
+                <td>{{instituicaoEnsino.bairro}}</td>
+                <td>{{instituicaoEnsino.rua}}</td>
+                <td>{{instituicaoEnsino.quarteirao}}</td>
+                <td>{{instituicaoEnsino.numeroPorta}}</td>
+                <td>
+                    <div *ngIf="instituicaoEnsino.hierarquiaId">
+                        <a [routerLink]="['/instituicao-ensino', instituicaoEnsino.hierarquiaId , 'view' ]" >{{instituicaoEnsino.hierarquiaNome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/instituicao-ensino', instituicaoEnsino.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/instituicao-ensino', instituicaoEnsino.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(instituicaoEnsino)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="instituicaoEnsinos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
