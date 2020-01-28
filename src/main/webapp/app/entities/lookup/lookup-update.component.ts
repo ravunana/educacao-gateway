@@ -138,7 +138,7 @@ export class LookupUpdateComponent implements OnInit {
 
   searchPessoa(event: any) {
     this.entidadeSistemaService.query({ 'nome.contains': event.query }).subscribe(data => {
-      this.entidadesistemas = data.body;
+      this.entidadesistemas = data.body ? this.entidadesistemas : [];
     });
   }
 }
