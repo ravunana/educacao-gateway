@@ -9,6 +9,20 @@
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
                         readonly />
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.lookup.entidade" for="field_entidade">Entidade</label>
+                    <p-autoComplete  
+                        id="entidadeId" 
+                        name="entidade" 
+                        (onSelect)="onSelect($event)" 
+                        [suggestions]="entidadesOptions" 
+                        (completeMethod)="search($event)" 
+                        field="nome" 
+                        placeholder="Informe o nome da entidade">
+                </p-autoComplete>
+                </div>
+                
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.lookup.nome" for="field_nome">Nome</label>
                     <input type="text" class="form-control" name="nome" id="field_nome"
@@ -40,20 +54,6 @@
                     <label class="form-control-label" jhiTranslate="educacaoApp.lookup.usuario" for="field_usuario">Usuario</label>
                     <input type="checkbox" class="form-control" name="usuario" id="field_usuario"
                            formControlName="usuario"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="educacaoApp.lookup.entidade" for="field_entidade">Entidade</label>
-                   
-                    <p-autoComplete id="field_entidades" name="entidade" field="nome" [suggestions]="entidadesistemas"
-                    (completeMethod)="searchPessoa($event)" required>
-                    </p-autoComplete>
-                </div>
-                <div *ngIf="editForm.get('entidadeId')!.invalid && (editForm.get('entidadeId')!.dirty || editForm.get('entidadeId')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('entidadeId')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
                 </div>
             </div>
             <div>

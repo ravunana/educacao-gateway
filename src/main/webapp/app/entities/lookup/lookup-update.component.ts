@@ -21,6 +21,8 @@ export class LookupUpdateComponent implements OnInit {
   isSaving = false;
 
   entidadesistemas: IEntidadeSistema[] = [];
+  entidadesOptions: any;
+  entidadeId = 0;
 
   editForm = this.fb.group({
     id: [],
@@ -28,7 +30,7 @@ export class LookupUpdateComponent implements OnInit {
     sigla: [null, [Validators.required]],
     descricao: [],
     usuario: [],
-    entidadeId: [null, Validators.required]
+    entidadeId: [null]
   });
 
   constructor(
@@ -104,7 +106,7 @@ export class LookupUpdateComponent implements OnInit {
       sigla: this.editForm.get(['sigla'])!.value,
       descricao: this.editForm.get(['descricao'])!.value,
       usuario: this.editForm.get(['usuario'])!.value,
-      entidadeId: this.editForm.get(['entidadeId'])!.value
+      entidadeId: this.entidadeId
     };
   }
 
@@ -128,17 +130,13 @@ export class LookupUpdateComponent implements OnInit {
     return item.id;
   }
 
-  onSelectPessoa(event: any): void {
-    alert(event.query);
-    // this.clienteService.query({ 'pessoaId.equals': pessoa.id }).subscribe(clienteResult => {
-    //   this.clienteId = clienteResult.body.shift().id;
-    //   // this.editForm.get('fornecedorId').patchValue(fornecedorId, { emitEvent: false });
-    // });
+  onSelect(event: any): void {
+    this.entidadeId = event.id;
   }
 
-  searchPessoa(event: any) {
+  search(event: any): void {
     this.entidadeSistemaService.query({ 'nome.contains': event.query }).subscribe(data => {
-      this.entidadesistemas = data.body ? this.entidadesistemas : [];
+      this.entidadesOptions = data.body;
     });
   }
 }
