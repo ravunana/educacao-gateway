@@ -20,7 +20,22 @@ describe('Service Tests', () => {
       service = injector.get(ProfessorService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Professor(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false);
+      elemDefault = new Professor(
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        'image/png',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        false
+      );
     });
 
     describe('Service methods', () => {
@@ -64,6 +79,9 @@ describe('Service Tests', () => {
             residencia: 'BBBBBB',
             numeroAgente: 'BBBBBB',
             utilizadorId: 'BBBBBB',
+            grauAcademico: 'BBBBBB',
+            cursoAcademico: 'BBBBBB',
+            observacao: 'BBBBBB',
             ativo: true
           },
           elemDefault
@@ -90,6 +108,9 @@ describe('Service Tests', () => {
             residencia: 'BBBBBB',
             numeroAgente: 'BBBBBB',
             utilizadorId: 'BBBBBB',
+            grauAcademico: 'BBBBBB',
+            cursoAcademico: 'BBBBBB',
+            observacao: 'BBBBBB',
             ativo: true
           },
           elemDefault

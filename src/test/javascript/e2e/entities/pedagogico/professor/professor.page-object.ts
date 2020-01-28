@@ -28,12 +28,15 @@ export class ProfessorUpdatePage {
   cancelButton = element(by.id('cancel-save'));
   nomeInput = element(by.id('field_nome'));
   sexoInput = element(by.id('field_sexo'));
-  fotografiaInput = element(by.id('field_fotografia'));
+  fotografiaInput = element(by.id('file_fotografia'));
   contactoInput = element(by.id('field_contacto'));
   emailInput = element(by.id('field_email'));
   residenciaInput = element(by.id('field_residencia'));
   numeroAgenteInput = element(by.id('field_numeroAgente'));
   utilizadorIdInput = element(by.id('field_utilizadorId'));
+  grauAcademicoInput = element(by.id('field_grauAcademico'));
+  cursoAcademicoInput = element(by.id('field_cursoAcademico'));
+  observacaoInput = element(by.id('field_observacao'));
   ativoInput = element(by.id('field_ativo'));
 
   async getPageTitle(): Promise<string> {
@@ -102,6 +105,30 @@ export class ProfessorUpdatePage {
 
   async getUtilizadorIdInput(): Promise<string> {
     return await this.utilizadorIdInput.getAttribute('value');
+  }
+
+  async setGrauAcademicoInput(grauAcademico: string): Promise<void> {
+    await this.grauAcademicoInput.sendKeys(grauAcademico);
+  }
+
+  async getGrauAcademicoInput(): Promise<string> {
+    return await this.grauAcademicoInput.getAttribute('value');
+  }
+
+  async setCursoAcademicoInput(cursoAcademico: string): Promise<void> {
+    await this.cursoAcademicoInput.sendKeys(cursoAcademico);
+  }
+
+  async getCursoAcademicoInput(): Promise<string> {
+    return await this.cursoAcademicoInput.getAttribute('value');
+  }
+
+  async setObservacaoInput(observacao: string): Promise<void> {
+    await this.observacaoInput.sendKeys(observacao);
+  }
+
+  async getObservacaoInput(): Promise<string> {
+    return await this.observacaoInput.getAttribute('value');
   }
 
   getAtivoInput(): ElementFinder {

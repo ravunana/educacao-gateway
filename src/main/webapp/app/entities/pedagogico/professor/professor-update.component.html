@@ -33,8 +33,21 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.fotografia" for="field_fotografia">Fotografia</label>
-                    <input type="text" class="form-control" name="fotografia" id="field_fotografia"
+                    <div>
+                        <div *ngIf="editForm.get('fotografia')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fotografiaContentType')!.value, editForm.get('fotografia')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('fotografiaContentType')!.value}}, {{byteSize(editForm.get('fotografia')!.value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({fotografia: null});editForm.patchValue({fotografiaContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fotografia" (change)="setFileData($event, 'fotografia', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotografia" id="field_fotografia"
                            formControlName="fotografia"/>
+                    <input type="hidden" class="form-control" name="fotografiaContentType" id="field_fotografiaContentType"
+                           formControlName="fotografiaContentType" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.contacto" for="field_contacto">Contacto</label>
@@ -80,6 +93,33 @@
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.utilizadorId" for="field_utilizadorId">Utilizador Id</label>
                     <input type="text" class="form-control" name="utilizadorId" id="field_utilizadorId"
                            formControlName="utilizadorId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.grauAcademico" for="field_grauAcademico">Grau Academico</label>
+                    <input type="text" class="form-control" name="grauAcademico" id="field_grauAcademico"
+                           formControlName="grauAcademico"/>
+                    <div *ngIf="editForm.get('grauAcademico')!.invalid && (editForm.get('grauAcademico')!.dirty || editForm.get('grauAcademico')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('grauAcademico')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.cursoAcademico" for="field_cursoAcademico">Curso Academico</label>
+                    <input type="text" class="form-control" name="cursoAcademico" id="field_cursoAcademico"
+                           formControlName="cursoAcademico"/>
+                    <div *ngIf="editForm.get('cursoAcademico')!.invalid && (editForm.get('cursoAcademico')!.dirty || editForm.get('cursoAcademico')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cursoAcademico')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.observacao" for="field_observacao">Observacao</label>
+                    <textarea class="form-control" name="observacao" id="field_observacao"
+                              formControlName="observacao"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoProfessor.ativo" for="field_ativo">Ativo</label>

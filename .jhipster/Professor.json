@@ -56,11 +56,17 @@
         },
         {
             "fieldName": "grauAcademico",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "cursoAcademico",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "observacao",
@@ -114,6 +120,6 @@
     "readOnly": false,
     "clientRootFolder": "",
     "applications": "*",
-    "microserviceName": "secretaria",
+    "microserviceName": "pedagogico",
     "searchEngine": "elasticsearch"
 }

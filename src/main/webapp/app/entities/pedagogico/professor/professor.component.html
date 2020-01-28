@@ -42,6 +42,9 @@
             <th scope="col"  jhiSortBy="residencia"><span jhiTranslate="educacaoApp.pedagogicoProfessor.residencia">Residencia</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="numeroAgente"><span jhiTranslate="educacaoApp.pedagogicoProfessor.numeroAgente">Numero Agente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="utilizadorId"><span jhiTranslate="educacaoApp.pedagogicoProfessor.utilizadorId">Utilizador Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="grauAcademico"><span jhiTranslate="educacaoApp.pedagogicoProfessor.grauAcademico">Grau Academico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cursoAcademico"><span jhiTranslate="educacaoApp.pedagogicoProfessor.cursoAcademico">Curso Academico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="observacao"><span jhiTranslate="educacaoApp.pedagogicoProfessor.observacao">Observacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="ativo"><span jhiTranslate="educacaoApp.pedagogicoProfessor.ativo">Ativo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -51,12 +54,18 @@
                 <td><a [routerLink]="['/professor', professor.id, 'view' ]">{{professor.id}}</a></td>
                 <td>{{professor.nome}}</td>
                 <td>{{professor.sexo}}</td>
-                <td>{{professor.fotografia}}</td>
+                <td>
+                    <a *ngIf="professor.fotografia" (click)="openFile(professor.fotografiaContentType, professor.fotografia)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="professor.fotografia">{{professor.fotografiaContentType}}, {{byteSize(professor.fotografia)}}</span>
+                </td>
                 <td>{{professor.contacto}}</td>
                 <td>{{professor.email}}</td>
                 <td>{{professor.residencia}}</td>
                 <td>{{professor.numeroAgente}}</td>
                 <td>{{professor.utilizadorId}}</td>
+                <td>{{professor.grauAcademico}}</td>
+                <td>{{professor.cursoAcademico}}</td>
+                <td>{{professor.observacao}}</td>
                 <td>{{professor.ativo}}</td>
                 <td class="text-right">
                     <div class="btn-group">

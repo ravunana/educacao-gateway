@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JhiDataUtils } from 'ng-jhipster';
 
 import { IProfessor } from 'app/shared/model/pedagogico/professor.model';
 
@@ -10,12 +11,20 @@ import { IProfessor } from 'app/shared/model/pedagogico/professor.model';
 export class ProfessorDetailComponent implements OnInit {
   professor: IProfessor | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+  constructor(protected dataUtils: JhiDataUtils, protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ professor }) => {
       this.professor = professor;
     });
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(contentType: string, base64String: string): void {
+    this.dataUtils.openFile(contentType, base64String);
   }
 
   previousState(): void {

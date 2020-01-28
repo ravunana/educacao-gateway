@@ -15,7 +15,10 @@
                 </dd>
                 <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.fotografia">Fotografia</span></dt>
                 <dd>
-                    <span>{{professor.fotografia}}</span>
+                    <div *ngIf="professor.fotografia">
+                        <a (click)="openFile(professor.fotografiaContentType!, professor.fotografia)" jhiTranslate="entity.action.open">open</a>
+                        {{professor.fotografiaContentType}}, {{byteSize(professor.fotografia)}}
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.contacto">Contacto</span></dt>
                 <dd>
@@ -36,6 +39,18 @@
                 <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.utilizadorId">Utilizador Id</span></dt>
                 <dd>
                     <span>{{professor.utilizadorId}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.grauAcademico">Grau Academico</span></dt>
+                <dd>
+                    <span>{{professor.grauAcademico}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.cursoAcademico">Curso Academico</span></dt>
+                <dd>
+                    <span>{{professor.cursoAcademico}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.observacao">Observacao</span></dt>
+                <dd>
+                    <span>{{professor.observacao}}</span>
                 </dd>
                 <dt><span jhiTranslate="educacaoApp.pedagogicoProfessor.ativo">Ativo</span></dt>
                 <dd>
