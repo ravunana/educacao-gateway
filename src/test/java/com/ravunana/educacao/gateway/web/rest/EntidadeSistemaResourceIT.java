@@ -3,12 +3,15 @@ package com.ravunana.educacao.gateway.web.rest;
 import com.ravunana.educacao.gateway.EducacaoApp;
 import com.ravunana.educacao.gateway.config.SecurityBeanOverrideConfiguration;
 import com.ravunana.educacao.gateway.domain.EntidadeSistema;
+import com.ravunana.educacao.gateway.domain.Lookup;
 import com.ravunana.educacao.gateway.repository.EntidadeSistemaRepository;
 import com.ravunana.educacao.gateway.repository.search.EntidadeSistemaSearchRepository;
 import com.ravunana.educacao.gateway.service.EntidadeSistemaService;
 import com.ravunana.educacao.gateway.service.dto.EntidadeSistemaDTO;
 import com.ravunana.educacao.gateway.service.mapper.EntidadeSistemaMapper;
 import com.ravunana.educacao.gateway.web.rest.errors.ExceptionTranslator;
+import com.ravunana.educacao.gateway.service.dto.EntidadeSistemaCriteria;
+import com.ravunana.educacao.gateway.service.EntidadeSistemaQueryService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,6 +67,9 @@ public class EntidadeSistemaResourceIT {
     private EntidadeSistemaSearchRepository mockEntidadeSistemaSearchRepository;
 
     @Autowired
+    private EntidadeSistemaQueryService entidadeSistemaQueryService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -85,7 +91,7 @@ public class EntidadeSistemaResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EntidadeSistemaResource entidadeSistemaResource = new EntidadeSistemaResource(entidadeSistemaService);
+        final EntidadeSistemaResource entidadeSistemaResource = new EntidadeSistemaResource(entidadeSistemaService, entidadeSistemaQueryService);
         this.restEntidadeSistemaMockMvc = MockMvcBuilders.standaloneSetup(entidadeSistemaResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -214,6 +220,158 @@ public class EntidadeSistemaResourceIT {
             .andExpect(jsonPath("$.id").value(entidadeSistema.getId().intValue()))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
+
+
+    @Test
+    @Transactional
+    public void getEntidadeSistemasByIdFiltering() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        Long id = entidadeSistema.getId();
+
+        defaultEntidadeSistemaShouldBeFound("id.equals=" + id);
+        defaultEntidadeSistemaShouldNotBeFound("id.notEquals=" + id);
+
+        defaultEntidadeSistemaShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultEntidadeSistemaShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultEntidadeSistemaShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultEntidadeSistemaShouldNotBeFound("id.lessThan=" + id);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome equals to DEFAULT_NOME
+        defaultEntidadeSistemaShouldBeFound("nome.equals=" + DEFAULT_NOME);
+
+        // Get all the entidadeSistemaList where nome equals to UPDATED_NOME
+        defaultEntidadeSistemaShouldNotBeFound("nome.equals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome not equals to DEFAULT_NOME
+        defaultEntidadeSistemaShouldNotBeFound("nome.notEquals=" + DEFAULT_NOME);
+
+        // Get all the entidadeSistemaList where nome not equals to UPDATED_NOME
+        defaultEntidadeSistemaShouldBeFound("nome.notEquals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeIsInShouldWork() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome in DEFAULT_NOME or UPDATED_NOME
+        defaultEntidadeSistemaShouldBeFound("nome.in=" + DEFAULT_NOME + "," + UPDATED_NOME);
+
+        // Get all the entidadeSistemaList where nome equals to UPDATED_NOME
+        defaultEntidadeSistemaShouldNotBeFound("nome.in=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome is not null
+        defaultEntidadeSistemaShouldBeFound("nome.specified=true");
+
+        // Get all the entidadeSistemaList where nome is null
+        defaultEntidadeSistemaShouldNotBeFound("nome.specified=false");
+    }
+                @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeContainsSomething() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome contains DEFAULT_NOME
+        defaultEntidadeSistemaShouldBeFound("nome.contains=" + DEFAULT_NOME);
+
+        // Get all the entidadeSistemaList where nome contains UPDATED_NOME
+        defaultEntidadeSistemaShouldNotBeFound("nome.contains=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByNomeNotContainsSomething() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+
+        // Get all the entidadeSistemaList where nome does not contain DEFAULT_NOME
+        defaultEntidadeSistemaShouldNotBeFound("nome.doesNotContain=" + DEFAULT_NOME);
+
+        // Get all the entidadeSistemaList where nome does not contain UPDATED_NOME
+        defaultEntidadeSistemaShouldBeFound("nome.doesNotContain=" + UPDATED_NOME);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEntidadeSistemasByLookupIsEqualToSomething() throws Exception {
+        // Initialize the database
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+        Lookup lookup = LookupResourceIT.createEntity(em);
+        em.persist(lookup);
+        em.flush();
+        entidadeSistema.addLookup(lookup);
+        entidadeSistemaRepository.saveAndFlush(entidadeSistema);
+        Long lookupId = lookup.getId();
+
+        // Get all the entidadeSistemaList where lookup equals to lookupId
+        defaultEntidadeSistemaShouldBeFound("lookupId.equals=" + lookupId);
+
+        // Get all the entidadeSistemaList where lookup equals to lookupId + 1
+        defaultEntidadeSistemaShouldNotBeFound("lookupId.equals=" + (lookupId + 1));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultEntidadeSistemaShouldBeFound(String filter) throws Exception {
+        restEntidadeSistemaMockMvc.perform(get("/api/entidade-sistemas?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(entidadeSistema.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
+
+        // Check, that the count call also returns 1
+        restEntidadeSistemaMockMvc.perform(get("/api/entidade-sistemas/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultEntidadeSistemaShouldNotBeFound(String filter) throws Exception {
+        restEntidadeSistemaMockMvc.perform(get("/api/entidade-sistemas?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restEntidadeSistemaMockMvc.perform(get("/api/entidade-sistemas/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().string("0"));
+    }
+
 
     @Test
     @Transactional

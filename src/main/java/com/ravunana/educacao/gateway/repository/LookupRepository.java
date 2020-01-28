@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface LookupRepository extends JpaRepository<Lookup, Long> {
+public interface LookupRepository extends JpaRepository<Lookup, Long>, JpaSpecificationExecutor<Lookup> {
 
 }

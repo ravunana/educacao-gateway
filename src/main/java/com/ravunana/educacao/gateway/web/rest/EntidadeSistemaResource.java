@@ -3,6 +3,8 @@ package com.ravunana.educacao.gateway.web.rest;
 import com.ravunana.educacao.gateway.service.EntidadeSistemaService;
 import com.ravunana.educacao.gateway.web.rest.errors.BadRequestAlertException;
 import com.ravunana.educacao.gateway.service.dto.EntidadeSistemaDTO;
+import com.ravunana.educacao.gateway.service.dto.EntidadeSistemaCriteria;
+import com.ravunana.educacao.gateway.service.EntidadeSistemaQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -44,8 +46,11 @@ public class EntidadeSistemaResource {
 
     private final EntidadeSistemaService entidadeSistemaService;
 
-    public EntidadeSistemaResource(EntidadeSistemaService entidadeSistemaService) {
+    private final EntidadeSistemaQueryService entidadeSistemaQueryService;
+
+    public EntidadeSistemaResource(EntidadeSistemaService entidadeSistemaService, EntidadeSistemaQueryService entidadeSistemaQueryService) {
         this.entidadeSistemaService = entidadeSistemaService;
+        this.entidadeSistemaQueryService = entidadeSistemaQueryService;
     }
 
     /**
@@ -94,14 +99,27 @@ public class EntidadeSistemaResource {
 
      * @param pageable the pagination information.
 
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of entidadeSistemas in body.
      */
     @GetMapping("/entidade-sistemas")
-    public ResponseEntity<List<EntidadeSistemaDTO>> getAllEntidadeSistemas(Pageable pageable) {
-        log.debug("REST request to get a page of EntidadeSistemas");
-        Page<EntidadeSistemaDTO> page = entidadeSistemaService.findAll(pageable);
+    public ResponseEntity<List<EntidadeSistemaDTO>> getAllEntidadeSistemas(EntidadeSistemaCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get EntidadeSistemas by criteria: {}", criteria);
+        Page<EntidadeSistemaDTO> page = entidadeSistemaQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+    * {@code GET  /entidade-sistemas/count} : count all the entidadeSistemas.
+    *
+    * @param criteria the criteria which the requested entities should match.
+    * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+    */
+    @GetMapping("/entidade-sistemas/count")
+    public ResponseEntity<Long> countEntidadeSistemas(EntidadeSistemaCriteria criteria) {
+        log.debug("REST request to count EntidadeSistemas by criteria: {}", criteria);
+        return ResponseEntity.ok().body(entidadeSistemaQueryService.countByCriteria(criteria));
     }
 
     /**

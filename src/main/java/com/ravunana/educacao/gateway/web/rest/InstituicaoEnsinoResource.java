@@ -3,6 +3,8 @@ package com.ravunana.educacao.gateway.web.rest;
 import com.ravunana.educacao.gateway.service.InstituicaoEnsinoService;
 import com.ravunana.educacao.gateway.web.rest.errors.BadRequestAlertException;
 import com.ravunana.educacao.gateway.service.dto.InstituicaoEnsinoDTO;
+import com.ravunana.educacao.gateway.service.dto.InstituicaoEnsinoCriteria;
+import com.ravunana.educacao.gateway.service.InstituicaoEnsinoQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -44,8 +46,11 @@ public class InstituicaoEnsinoResource {
 
     private final InstituicaoEnsinoService instituicaoEnsinoService;
 
-    public InstituicaoEnsinoResource(InstituicaoEnsinoService instituicaoEnsinoService) {
+    private final InstituicaoEnsinoQueryService instituicaoEnsinoQueryService;
+
+    public InstituicaoEnsinoResource(InstituicaoEnsinoService instituicaoEnsinoService, InstituicaoEnsinoQueryService instituicaoEnsinoQueryService) {
         this.instituicaoEnsinoService = instituicaoEnsinoService;
+        this.instituicaoEnsinoQueryService = instituicaoEnsinoQueryService;
     }
 
     /**
@@ -94,14 +99,27 @@ public class InstituicaoEnsinoResource {
 
      * @param pageable the pagination information.
 
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of instituicaoEnsinos in body.
      */
     @GetMapping("/instituicao-ensinos")
-    public ResponseEntity<List<InstituicaoEnsinoDTO>> getAllInstituicaoEnsinos(Pageable pageable) {
-        log.debug("REST request to get a page of InstituicaoEnsinos");
-        Page<InstituicaoEnsinoDTO> page = instituicaoEnsinoService.findAll(pageable);
+    public ResponseEntity<List<InstituicaoEnsinoDTO>> getAllInstituicaoEnsinos(InstituicaoEnsinoCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get InstituicaoEnsinos by criteria: {}", criteria);
+        Page<InstituicaoEnsinoDTO> page = instituicaoEnsinoQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+    * {@code GET  /instituicao-ensinos/count} : count all the instituicaoEnsinos.
+    *
+    * @param criteria the criteria which the requested entities should match.
+    * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+    */
+    @GetMapping("/instituicao-ensinos/count")
+    public ResponseEntity<Long> countInstituicaoEnsinos(InstituicaoEnsinoCriteria criteria) {
+        log.debug("REST request to count InstituicaoEnsinos by criteria: {}", criteria);
+        return ResponseEntity.ok().body(instituicaoEnsinoQueryService.countByCriteria(criteria));
     }
 
     /**

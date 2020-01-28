@@ -10,6 +10,8 @@ import com.ravunana.educacao.gateway.service.LookupService;
 import com.ravunana.educacao.gateway.service.dto.LookupDTO;
 import com.ravunana.educacao.gateway.service.mapper.LookupMapper;
 import com.ravunana.educacao.gateway.web.rest.errors.ExceptionTranslator;
+import com.ravunana.educacao.gateway.service.dto.LookupCriteria;
+import com.ravunana.educacao.gateway.service.LookupQueryService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,6 +77,9 @@ public class LookupResourceIT {
     private LookupSearchRepository mockLookupSearchRepository;
 
     @Autowired
+    private LookupQueryService lookupQueryService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -96,7 +101,7 @@ public class LookupResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final LookupResource lookupResource = new LookupResource(lookupService);
+        final LookupResource lookupResource = new LookupResource(lookupService, lookupQueryService);
         this.restLookupMockMvc = MockMvcBuilders.standaloneSetup(lookupResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -279,6 +284,287 @@ public class LookupResourceIT {
             .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO.toString()))
             .andExpect(jsonPath("$.usuario").value(DEFAULT_USUARIO.booleanValue()));
     }
+
+
+    @Test
+    @Transactional
+    public void getLookupsByIdFiltering() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        Long id = lookup.getId();
+
+        defaultLookupShouldBeFound("id.equals=" + id);
+        defaultLookupShouldNotBeFound("id.notEquals=" + id);
+
+        defaultLookupShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultLookupShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultLookupShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultLookupShouldNotBeFound("id.lessThan=" + id);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllLookupsByNomeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome equals to DEFAULT_NOME
+        defaultLookupShouldBeFound("nome.equals=" + DEFAULT_NOME);
+
+        // Get all the lookupList where nome equals to UPDATED_NOME
+        defaultLookupShouldNotBeFound("nome.equals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByNomeIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome not equals to DEFAULT_NOME
+        defaultLookupShouldNotBeFound("nome.notEquals=" + DEFAULT_NOME);
+
+        // Get all the lookupList where nome not equals to UPDATED_NOME
+        defaultLookupShouldBeFound("nome.notEquals=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByNomeIsInShouldWork() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome in DEFAULT_NOME or UPDATED_NOME
+        defaultLookupShouldBeFound("nome.in=" + DEFAULT_NOME + "," + UPDATED_NOME);
+
+        // Get all the lookupList where nome equals to UPDATED_NOME
+        defaultLookupShouldNotBeFound("nome.in=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByNomeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome is not null
+        defaultLookupShouldBeFound("nome.specified=true");
+
+        // Get all the lookupList where nome is null
+        defaultLookupShouldNotBeFound("nome.specified=false");
+    }
+                @Test
+    @Transactional
+    public void getAllLookupsByNomeContainsSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome contains DEFAULT_NOME
+        defaultLookupShouldBeFound("nome.contains=" + DEFAULT_NOME);
+
+        // Get all the lookupList where nome contains UPDATED_NOME
+        defaultLookupShouldNotBeFound("nome.contains=" + UPDATED_NOME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByNomeNotContainsSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where nome does not contain DEFAULT_NOME
+        defaultLookupShouldNotBeFound("nome.doesNotContain=" + DEFAULT_NOME);
+
+        // Get all the lookupList where nome does not contain UPDATED_NOME
+        defaultLookupShouldBeFound("nome.doesNotContain=" + UPDATED_NOME);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllLookupsBySiglaIsEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla equals to DEFAULT_SIGLA
+        defaultLookupShouldBeFound("sigla.equals=" + DEFAULT_SIGLA);
+
+        // Get all the lookupList where sigla equals to UPDATED_SIGLA
+        defaultLookupShouldNotBeFound("sigla.equals=" + UPDATED_SIGLA);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsBySiglaIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla not equals to DEFAULT_SIGLA
+        defaultLookupShouldNotBeFound("sigla.notEquals=" + DEFAULT_SIGLA);
+
+        // Get all the lookupList where sigla not equals to UPDATED_SIGLA
+        defaultLookupShouldBeFound("sigla.notEquals=" + UPDATED_SIGLA);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsBySiglaIsInShouldWork() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla in DEFAULT_SIGLA or UPDATED_SIGLA
+        defaultLookupShouldBeFound("sigla.in=" + DEFAULT_SIGLA + "," + UPDATED_SIGLA);
+
+        // Get all the lookupList where sigla equals to UPDATED_SIGLA
+        defaultLookupShouldNotBeFound("sigla.in=" + UPDATED_SIGLA);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsBySiglaIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla is not null
+        defaultLookupShouldBeFound("sigla.specified=true");
+
+        // Get all the lookupList where sigla is null
+        defaultLookupShouldNotBeFound("sigla.specified=false");
+    }
+                @Test
+    @Transactional
+    public void getAllLookupsBySiglaContainsSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla contains DEFAULT_SIGLA
+        defaultLookupShouldBeFound("sigla.contains=" + DEFAULT_SIGLA);
+
+        // Get all the lookupList where sigla contains UPDATED_SIGLA
+        defaultLookupShouldNotBeFound("sigla.contains=" + UPDATED_SIGLA);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsBySiglaNotContainsSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where sigla does not contain DEFAULT_SIGLA
+        defaultLookupShouldNotBeFound("sigla.doesNotContain=" + DEFAULT_SIGLA);
+
+        // Get all the lookupList where sigla does not contain UPDATED_SIGLA
+        defaultLookupShouldBeFound("sigla.doesNotContain=" + UPDATED_SIGLA);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllLookupsByUsuarioIsEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where usuario equals to DEFAULT_USUARIO
+        defaultLookupShouldBeFound("usuario.equals=" + DEFAULT_USUARIO);
+
+        // Get all the lookupList where usuario equals to UPDATED_USUARIO
+        defaultLookupShouldNotBeFound("usuario.equals=" + UPDATED_USUARIO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByUsuarioIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where usuario not equals to DEFAULT_USUARIO
+        defaultLookupShouldNotBeFound("usuario.notEquals=" + DEFAULT_USUARIO);
+
+        // Get all the lookupList where usuario not equals to UPDATED_USUARIO
+        defaultLookupShouldBeFound("usuario.notEquals=" + UPDATED_USUARIO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByUsuarioIsInShouldWork() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where usuario in DEFAULT_USUARIO or UPDATED_USUARIO
+        defaultLookupShouldBeFound("usuario.in=" + DEFAULT_USUARIO + "," + UPDATED_USUARIO);
+
+        // Get all the lookupList where usuario equals to UPDATED_USUARIO
+        defaultLookupShouldNotBeFound("usuario.in=" + UPDATED_USUARIO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByUsuarioIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        lookupRepository.saveAndFlush(lookup);
+
+        // Get all the lookupList where usuario is not null
+        defaultLookupShouldBeFound("usuario.specified=true");
+
+        // Get all the lookupList where usuario is null
+        defaultLookupShouldNotBeFound("usuario.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllLookupsByEntidadeIsEqualToSomething() throws Exception {
+        // Get already existing entity
+        EntidadeSistema entidade = lookup.getEntidade();
+        lookupRepository.saveAndFlush(lookup);
+        Long entidadeId = entidade.getId();
+
+        // Get all the lookupList where entidade equals to entidadeId
+        defaultLookupShouldBeFound("entidadeId.equals=" + entidadeId);
+
+        // Get all the lookupList where entidade equals to entidadeId + 1
+        defaultLookupShouldNotBeFound("entidadeId.equals=" + (entidadeId + 1));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultLookupShouldBeFound(String filter) throws Exception {
+        restLookupMockMvc.perform(get("/api/lookups?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(lookup.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
+            .andExpect(jsonPath("$.[*].sigla").value(hasItem(DEFAULT_SIGLA)))
+            .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO.toString())))
+            .andExpect(jsonPath("$.[*].usuario").value(hasItem(DEFAULT_USUARIO.booleanValue())));
+
+        // Check, that the count call also returns 1
+        restLookupMockMvc.perform(get("/api/lookups/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultLookupShouldNotBeFound(String filter) throws Exception {
+        restLookupMockMvc.perform(get("/api/lookups?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restLookupMockMvc.perform(get("/api/lookups/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().string("0"));
+    }
+
 
     @Test
     @Transactional

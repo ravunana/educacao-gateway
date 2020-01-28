@@ -3,6 +3,8 @@ package com.ravunana.educacao.gateway.web.rest;
 import com.ravunana.educacao.gateway.service.LookupService;
 import com.ravunana.educacao.gateway.web.rest.errors.BadRequestAlertException;
 import com.ravunana.educacao.gateway.service.dto.LookupDTO;
+import com.ravunana.educacao.gateway.service.dto.LookupCriteria;
+import com.ravunana.educacao.gateway.service.LookupQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -44,8 +46,11 @@ public class LookupResource {
 
     private final LookupService lookupService;
 
-    public LookupResource(LookupService lookupService) {
+    private final LookupQueryService lookupQueryService;
+
+    public LookupResource(LookupService lookupService, LookupQueryService lookupQueryService) {
         this.lookupService = lookupService;
+        this.lookupQueryService = lookupQueryService;
     }
 
     /**
@@ -94,14 +99,27 @@ public class LookupResource {
 
      * @param pageable the pagination information.
 
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lookups in body.
      */
     @GetMapping("/lookups")
-    public ResponseEntity<List<LookupDTO>> getAllLookups(Pageable pageable) {
-        log.debug("REST request to get a page of Lookups");
-        Page<LookupDTO> page = lookupService.findAll(pageable);
+    public ResponseEntity<List<LookupDTO>> getAllLookups(LookupCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Lookups by criteria: {}", criteria);
+        Page<LookupDTO> page = lookupQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+    * {@code GET  /lookups/count} : count all the lookups.
+    *
+    * @param criteria the criteria which the requested entities should match.
+    * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+    */
+    @GetMapping("/lookups/count")
+    public ResponseEntity<Long> countLookups(LookupCriteria criteria) {
+        log.debug("REST request to count Lookups by criteria: {}", criteria);
+        return ResponseEntity.ok().body(lookupQueryService.countByCriteria(criteria));
     }
 
     /**
