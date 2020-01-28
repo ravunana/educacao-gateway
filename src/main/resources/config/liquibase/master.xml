@@ -28,4 +28,5 @@
     <include file="config/liquibase/changelog/20200126140936_added_entity_constraints_AssinaturaDigital.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200126140937_added_entity_constraints_ContactoInstituicao.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="config/liquibase/changelog/20200126235200_insert_entidade_sistema.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

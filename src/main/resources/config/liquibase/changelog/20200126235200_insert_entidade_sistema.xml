@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="20200126235200-1" author="Ramiro Cardoso">
+
+        <sql>
+            INSERT INTO entidade_sistema
+            VALUES
+            (NULL, 'TIPO_VINCULO'),
+            (NULL, 'UNIDADE_PAGADORA'),
+            (NULL, 'TIPO_INSTALACAO'),
+            (NULL, 'PROVINCIA'),
+            (NULL, 'MUNICIPIO'),
+            (NULL, 'TIPO_CONTACTO'),
+            (NULL, 'TIPO_ASSINATURA'),
+            (NULL, 'SEXO'),
+            (NULL, 'AREA_FORMACAO'),
+            (NULL, 'TEMPO_SEMANAL'),
+            (NULL, 'PERIODO_LECTIVO'),
+            (NULL, 'DISCIPLINA'),
+            (NULL, 'CLASSE'),
+            (NULL, 'TURNO'),
+            (NULL, 'SALA'),
+            (NULL, 'INICIO_AULA'),
+            (NULL, 'FIM_AULA'),
+            (NULL, 'DIA_SEMANA'),
+            (NULL, 'CATEGORIA'),
+            (NULL, 'CATEGORIA_HORARIO'),
+            (NULL, 'ESTADO_ACTIVIDADE'),
+            (NULL, 'SEMANA_LECTIVA'),
+            (NULL, 'SITUACAO_DISCIPLINA'),
+            (NULL, 'CATEGORIA_PROVA'),
+            (NULL, 'GRUPO_TESTE'),
+            (NULL, 'TIPO_OCORRENCIA'),
+            (NULL, 'PAIS'),
+            (NULL, 'TIPO_DOCUMENTO'),
+            (NULL, 'GRUPO_SANGUINIO'),
+            (NULL, 'SITUACAO_ACADEMICA'),
+            (NULL, 'GRAU_PARENTESCO'),
+            (NULL, 'MEIO_PAGAMENTO'),
+            (NULL, 'ESTADO_PAGAMENTO'),
+            (NULL, 'MES')
+            ;
+        </sql>
+       
+    </changeSet>
+
+</databaseChangeLog>
