@@ -44,10 +44,10 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.lookup.entidade" for="field_entidade">Entidade</label>
-                    <select class="form-control" id="field_entidade" name="entidade" formControlName="entidadeId">
-                        <option *ngIf="!editForm.get('entidadeId')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="entidadeSistemaOption.id" *ngFor="let entidadeSistemaOption of entidadesistemas; trackBy: trackById">{{entidadeSistemaOption.nome}}</option>
-                    </select>
+                   
+                    <p-autoComplete id="field_entidades" name="entidade" field="nome" [suggestions]="entidadesistemas"
+                    (completeMethod)="searchPessoa($event)" required>
+                    </p-autoComplete>
                 </div>
                 <div *ngIf="editForm.get('entidadeId')!.invalid && (editForm.get('entidadeId')!.dirty || editForm.get('entidadeId')!.touched)">
                     <small class="form-text text-danger"

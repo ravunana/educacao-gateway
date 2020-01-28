@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dosificacao">
+            <h2><span jhiTranslate="educacaoApp.secretariaDosificacao.detail.title">Dosificacao</span> {{dosificacao.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.peridoLective">Perido Lective</span></dt>
+                <dd>
+                    <span>{{dosificacao.peridoLective}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.objectivoGeral">Objectivo Geral</span></dt>
+                <dd>
+                    <span>{{dosificacao.objectivoGeral}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.semanaLectiva">Semana Lectiva</span></dt>
+                <dd>
+                    <span>{{dosificacao.semanaLectiva}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.de">De</span></dt>
+                <dd>
+                    <span>{{dosificacao.de}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.ate">Ate</span></dt>
+                <dd>
+                    <span>{{dosificacao.ate}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.unidadeTematica">Unidade Tematica</span></dt>
+                <dd>
+                    <span>{{dosificacao.unidadeTematica}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.conteudo">Conteudo</span></dt>
+                <dd>
+                    <span>{{dosificacao.conteudo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.procedimentoEnsino">Procedimento Ensino</span></dt>
+                <dd>
+                    <span>{{dosificacao.procedimentoEnsino}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.recursosDidaticos">Recursos Didaticos</span></dt>
+                <dd>
+                    <span>{{dosificacao.recursosDidaticos}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.tempoAula">Tempo Aula</span></dt>
+                <dd>
+                    <span>{{dosificacao.tempoAula}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.formaAvaliacao">Forma Avaliacao</span></dt>
+                <dd>
+                    <span>{{dosificacao.formaAvaliacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.curso">Curso</span></dt>
+                <dd>
+                    <span *ngFor="let curso of dosificacao.cursos; let last = last">
+                        <a [routerLink]="['/curso', curso?.id, 'view' ]">{{curso.nome}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaDosificacao.curriulo">Curriulo</span></dt>
+                <dd>
+                    <div *ngIf="dosificacao.curriuloId">
+                        <a [routerLink]="['/plano-curricular', dosificacao.curriuloId, 'view']">{{dosificacao.curriuloDescricao}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dosificacao', dosificacao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

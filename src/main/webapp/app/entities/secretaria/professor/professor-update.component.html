@@ -1,0 +1,129 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="rv-professor-heading" jhiTranslate="educacaoApp.secretariaProfessor.home.createOrEditLabel">Create or edit a Professor</h2>
+            <div>
+                <rv-alert-error></rv-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.sexo" for="field_sexo">Sexo</label>
+                    <input type="text" class="form-control" name="sexo" id="field_sexo"
+                           formControlName="sexo"/>
+                    <div *ngIf="editForm.get('sexo')!.invalid && (editForm.get('sexo')!.dirty || editForm.get('sexo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sexo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.fotografia" for="field_fotografia">Fotografia</label>
+                    <div>
+                        <div *ngIf="editForm.get('fotografia')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fotografiaContentType')!.value, editForm.get('fotografia')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('fotografiaContentType')!.value}}, {{byteSize(editForm.get('fotografia')!.value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({fotografia: null});editForm.patchValue({fotografiaContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fotografia" (change)="setFileData($event, 'fotografia', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotografia" id="field_fotografia"
+                           formControlName="fotografia"/>
+                    <input type="hidden" class="form-control" name="fotografiaContentType" id="field_fotografiaContentType"
+                           formControlName="fotografiaContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.contacto" for="field_contacto">Contacto</label>
+                    <input type="text" class="form-control" name="contacto" id="field_contacto"
+                           formControlName="contacto"/>
+                    <div *ngIf="editForm.get('contacto')!.invalid && (editForm.get('contacto')!.dirty || editForm.get('contacto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('contacto')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.residencia" for="field_residencia">Residencia</label>
+                    <input type="text" class="form-control" name="residencia" id="field_residencia"
+                           formControlName="residencia"/>
+                    <div *ngIf="editForm.get('residencia')!.invalid && (editForm.get('residencia')!.dirty || editForm.get('residencia')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('residencia')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.numeroAgente" for="field_numeroAgente">Numero Agente</label>
+                    <input type="text" class="form-control" name="numeroAgente" id="field_numeroAgente"
+                           formControlName="numeroAgente"/>
+                    <div *ngIf="editForm.get('numeroAgente')!.invalid && (editForm.get('numeroAgente')!.dirty || editForm.get('numeroAgente')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numeroAgente')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.utilizadorId" for="field_utilizadorId">Utilizador Id</label>
+                    <input type="text" class="form-control" name="utilizadorId" id="field_utilizadorId"
+                           formControlName="utilizadorId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.grauAcademico" for="field_grauAcademico">Grau Academico</label>
+                    <input type="text" class="form-control" name="grauAcademico" id="field_grauAcademico"
+                           formControlName="grauAcademico"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.cursoAcademico" for="field_cursoAcademico">Curso Academico</label>
+                    <input type="text" class="form-control" name="cursoAcademico" id="field_cursoAcademico"
+                           formControlName="cursoAcademico"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.observacao" for="field_observacao">Observacao</label>
+                    <textarea class="form-control" name="observacao" id="field_observacao"
+                              formControlName="observacao"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="educacaoApp.secretariaProfessor.ativo" for="field_ativo">Ativo</label>
+                    <input type="checkbox" class="form-control" name="ativo" id="field_ativo"
+                           formControlName="ativo"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

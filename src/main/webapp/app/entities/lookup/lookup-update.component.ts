@@ -127,4 +127,18 @@ export class LookupUpdateComponent implements OnInit {
   trackById(index: number, item: IEntidadeSistema): any {
     return item.id;
   }
+
+  onSelectPessoa(event: any): void {
+    alert(event.query);
+    // this.clienteService.query({ 'pessoaId.equals': pessoa.id }).subscribe(clienteResult => {
+    //   this.clienteId = clienteResult.body.shift().id;
+    //   // this.editForm.get('fornecedorId').patchValue(fornecedorId, { emitEvent: false });
+    // });
+  }
+
+  searchPessoa(event: any) {
+    this.entidadeSistemaService.query({ 'nome.contains': event.query }).subscribe(data => {
+      this.entidadesistemas = data.body;
+    });
+  }
 }

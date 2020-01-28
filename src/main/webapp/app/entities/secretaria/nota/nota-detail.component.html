@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nota">
+            <h2><span jhiTranslate="educacaoApp.secretariaNota.detail.title">Nota</span> {{nota.id}}</h2>
+            <hr>
+            <rv-alert-error></rv-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.numeroProcesso">Numero Processo</span></dt>
+                <dd>
+                    <span>{{nota.numeroProcesso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.nomeAluno">Nome Aluno</span></dt>
+                <dd>
+                    <span>{{nota.nomeAluno}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.disciplina">Disciplina</span></dt>
+                <dd>
+                    <span>{{nota.disciplina}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.peridoLectivo">Perido Lectivo</span></dt>
+                <dd>
+                    <span>{{nota.peridoLectivo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.anoLectivo">Ano Lectivo</span></dt>
+                <dd>
+                    <span>{{nota.anoLectivo}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.faltaJustificada">Falta Justificada</span></dt>
+                <dd>
+                    <span>{{nota.faltaJustificada}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.faltaInjustificada">Falta Injustificada</span></dt>
+                <dd>
+                    <span>{{nota.faltaInjustificada}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.avaliacaoContinuca">Avaliacao Continuca</span></dt>
+                <dd>
+                    <span>{{nota.avaliacaoContinuca}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.primeiraProva">Primeira Prova</span></dt>
+                <dd>
+                    <span>{{nota.primeiraProva}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.segundaProva">Segunda Prova</span></dt>
+                <dd>
+                    <span>{{nota.segundaProva}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.exame">Exame</span></dt>
+                <dd>
+                    <span>{{nota.exame}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.recurso">Recurso</span></dt>
+                <dd>
+                    <span>{{nota.recurso}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.exameEspecial">Exame Especial</span></dt>
+                <dd>
+                    <span>{{nota.exameEspecial}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.prova">Prova</span></dt>
+                <dd>
+                    <div *ngIf="nota.prova">
+                        <a (click)="openFile(nota.provaContentType!, nota.prova)" jhiTranslate="entity.action.open">open</a>
+                        {{nota.provaContentType}}, {{byteSize(nota.prova)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.situacao">Situacao</span></dt>
+                <dd>
+                    <span>{{nota.situacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.turma">Turma</span></dt>
+                <dd>
+                    <div *ngIf="nota.turmaId">
+                        <a [routerLink]="['/turma', nota.turmaId, 'view']">{{nota.turmaDescricao}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.curriculo">Curriculo</span></dt>
+                <dd>
+                    <div *ngIf="nota.curriculoId">
+                        <a [routerLink]="['/plano-curricular', nota.curriculoId, 'view']">{{nota.curriculoDescricao}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="educacaoApp.secretariaNota.professor">Professor</span></dt>
+                <dd>
+                    <div *ngIf="nota.professorId">
+                        <a [routerLink]="['/professor', nota.professorId, 'view']">{{nota.professorNome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nota', nota.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
