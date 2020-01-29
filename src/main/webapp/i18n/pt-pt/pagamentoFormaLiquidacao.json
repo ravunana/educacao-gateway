@@ -2,22 +2,22 @@
   "educacaoApp": {
     "pagamentoFormaLiquidacao": {
       "home": {
-        "title": "Forma Liquidacaos",
-        "createLabel": "Criar novo(a) Forma Liquidacao",
-        "createOrEditLabel": "Criar ou editar Forma Liquidacao",
-        "search": "Procurar por Forma Liquidacao",
-        "notFound": "Nenhum Forma Liquidacaos encontrado"
+        "title": "Forma de pagamento",
+        "createLabel": "Nova forma de pagamento",
+        "createOrEditLabel": "Forma de pagamento",
+        "search": "Procurar por Forma de pagamento",
+        "notFound": "Nenhuma Forma de pagamentos encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Forma Liquidacao {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Forma de pagamento {{ id }}?"
       },
       "detail": {
-        "title": "Forma Liquidacao"
+        "title": "Forma de pagamento"
       },
       "nome": "Nome",
-      "juro": "Juro",
-      "prazoLiquidacao": "Prazo Liquidacao",
-      "quantidade": "Quantidade",
+      "juro": "Taxa de juro",
+      "prazoLiquidacao": "Prazo de pagamento",
+      "quantidade": "Número de prestações",
       "icon": "Icon",
       "pagamentoEmolumento": "Pagamento Emolumento"
     }

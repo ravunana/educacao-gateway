@@ -2,23 +2,23 @@
   "educacaoApp": {
     "pedagogicoTesteConhecimento": {
       "home": {
-        "title": "Teste Conhecimentos",
-        "createLabel": "Criar novo(a) Teste Conhecimento",
-        "createOrEditLabel": "Criar ou editar Teste Conhecimento",
-        "search": "Procurar por Teste Conhecimento",
-        "notFound": "Nenhum Teste Conhecimentos encontrado"
+        "title": "Provas",
+        "createLabel": "Prova",
+        "createOrEditLabel": "Nova prova",
+        "search": "Procurar por prova",
+        "notFound": "Nenhuma prova encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Teste Conhecimento {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a prova {{ id }}?"
       },
       "detail": {
-        "title": "Teste Conhecimento"
+        "title": "Prova"
       },
-      "categoria": "Categoria",
-      "periodoLectivo": "Periodo Lectivo",
-      "duracao": "Duracao",
+      "categoria": "Categória",
+      "periodoLectivo": "Periodo lectivo",
+      "duracao": "Duração da prova",
       "data": "Data",
-      "questaoTeste": "Questao Teste",
+      "questaoTeste": "Pergunta",
       "curriculo": "Curriculo",
       "turma": "Turma",
       "professor": "Professor"

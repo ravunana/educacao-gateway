@@ -2,30 +2,30 @@
   "educacaoApp": {
     "pedagogicoDosificacao": {
       "home": {
-        "title": "Dosificacaos",
-        "createLabel": "Criar novo(a) Dosificacao",
-        "createOrEditLabel": "Criar ou editar Dosificacao",
-        "search": "Procurar por Dosificacao",
-        "notFound": "Nenhum Dosificacaos encontrado"
+        "title": "Dosificações",
+        "createLabel": "Nova dosificação",
+        "createOrEditLabel": "Dosificação",
+        "search": "Procurar por Dosificação",
+        "notFound": "Nenhum Dosificação encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Dosificacao {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Dosificação {{ id }}?"
       },
       "detail": {
-        "title": "Dosificacao"
+        "title": "Dosificação"
       },
-      "peridoLective": "Perido Lective",
-      "objectivoGeral": "Objectivo Geral",
-      "semanaLectiva": "Semana Lectiva",
+      "peridoLective": "Periodo lectivo",
+      "objectivoGeral": "Objectivo geral",
+      "semanaLectiva": "Semana lectiva",
       "de": "De",
-      "ate": "Ate",
-      "unidadeTematica": "Unidade Tematica",
-      "conteudo": "Conteudo",
-      "procedimentoEnsino": "Procedimento Ensino",
-      "recursosDidaticos": "Recursos Didaticos",
-      "tempoAula": "Tempo Aula",
-      "formaAvaliacao": "Forma Avaliacao",
-      "planoAula": "Plano Aula",
+      "ate": "Até",
+      "unidadeTematica": "Unidade temática",
+      "conteudo": "Conteúdo",
+      "procedimentoEnsino": "Procedimento de ensino",
+      "recursosDidaticos": "Recursos didaticos",
+      "tempoAula": "Tempo de aula",
+      "formaAvaliacao": "Forma de avaliação",
+      "planoAula": "Plano de aula",
       "curso": "Curso",
       "curriulo": "Curriulo"
     }

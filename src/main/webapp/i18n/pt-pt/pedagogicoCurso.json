@@ -2,26 +2,26 @@
   "educacaoApp": {
     "pedagogicoCurso": {
       "home": {
-        "title": "Cursos",
-        "createLabel": "Criar novo(a) Curso",
-        "createOrEditLabel": "Criar ou editar Curso",
+        "title": "Curso",
+        "createLabel": "Novo curso",
+        "createOrEditLabel": "CCurso",
         "search": "Procurar por Curso",
-        "notFound": "Nenhum Cursos encontrado"
+        "notFound": "Nenhum Curso encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Curso {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Curso {{ id }}?"
       },
       "detail": {
         "title": "Curso"
       },
       "nome": "Nome",
       "sigla": "Sigla",
-      "competencias": "Competencias",
-      "areaFormacao": "Area Formacao",
-      "planoCurricular": "Plano Curricular",
+      "competencias": "Competências",
+      "areaFormacao": "Área de formação",
+      "planoCurricular": "Plano curricular",
       "turma": "Turma",
-      "planoActividade": "Plano Actividade",
-      "dosificacaoCurso": "Dosificacao Curso"
+      "planoActividade": "Plano de actividade",
+      "dosificacaoCurso": "Dosificação do curso"
     }
   },
   "pedagogicoApp": {

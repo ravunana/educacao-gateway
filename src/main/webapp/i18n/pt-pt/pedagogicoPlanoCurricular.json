@@ -2,27 +2,27 @@
   "educacaoApp": {
     "pedagogicoPlanoCurricular": {
       "home": {
-        "title": "Plano Curriculars",
-        "createLabel": "Criar novo(a) Plano Curricular",
-        "createOrEditLabel": "Criar ou editar Plano Curricular",
-        "search": "Procurar por Plano Curricular",
-        "notFound": "Nenhum Plano Curriculars encontrado"
+        "title": "Planos curriculares",
+        "createLabel": "Novo plano curricular",
+        "createOrEditLabel": "Plano curricular",
+        "search": "Procurar por Plano curricular",
+        "notFound": "Nenhum Plano curriculars encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Plano Curricular {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Plano curricular {{ id }}?"
       },
       "detail": {
-        "title": "Plano Curricular"
+        "title": "Plano curricular"
       },
-      "descricao": "Descricao",
-      "terminal": "Terminal",
-      "tempoSemanal": "Tempo Semanal",
-      "periodoLectivo": "Periodo Lectivo",
+      "descricao": "Descrição",
+      "terminal": "Disciplina terminal?",
+      "tempoSemanal": "Tempos semanais",
+      "periodoLectivo": "Periodo lectivo",
       "componente": "Componente",
       "disciplina": "Disciplina",
       "classe": "Classe",
-      "planoAula": "Plano Aula",
-      "dosificacao": "Dosificacao",
+      "planoAula": "Plano de aula",
+      "dosificacao": "Dosificação",
       "nota": "Nota",
       "aula": "Aula",
       "horario": "Horario",

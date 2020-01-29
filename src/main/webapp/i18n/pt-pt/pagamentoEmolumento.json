@@ -3,26 +3,26 @@
     "pagamentoEmolumento": {
       "home": {
         "title": "Emolumentos",
-        "createLabel": "Criar novo(a) Emolumento",
-        "createOrEditLabel": "Criar ou editar Emolumento",
+        "createLabel": "Novo emolumento",
+        "createOrEditLabel": "Emolumento",
         "search": "Procurar por Emolumento",
-        "notFound": "Nenhum Emolumentos encontrado"
+        "notFound": "Nenhum Emolumento encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Emolumento {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Emolumento {{ id }}?"
       },
       "detail": {
         "title": "Emolumento"
       },
-      "nome": "Nome",
-      "montante": "Montante",
-      "montanteMulta": "Montante Multa",
-      "tempoMulta": "Tempo Multa",
-      "quantidade": "Quantidade",
+      "nome": "Nome do emolumento",
+      "montante": "Valor do emolumento",
+      "montanteMulta": "Valor da multa",
+      "tempoMulta": "Dia de aplicação da multa",
+      "quantidade": "Nº de vezes que paga o emolumento",
       "turno": "Turno",
       "classe": "Classe",
       "curso": "Curso",
-      "efeitoPagamento": "Efeito Pagamento"
+      "efeitoPagamento": "Efeito de pagamento"
     }
   },
   "pagamentoApp": {

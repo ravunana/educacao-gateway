@@ -2,26 +2,26 @@
   "educacaoApp": {
     "pagamentoPagamentoEmolumento": {
       "home": {
-        "title": "Pagamento Emolumentos",
-        "createLabel": "Criar novo(a) Pagamento Emolumento",
-        "createOrEditLabel": "Criar ou editar Pagamento Emolumento",
-        "search": "Procurar por Pagamento Emolumento",
-        "notFound": "Nenhum Pagamento Emolumentos encontrado"
+        "title": "Pagamento de emolumento",
+        "createLabel": "Novo pagamento",
+        "createOrEditLabel": "Pagamento",
+        "search": "Procurar por Pagamento",
+        "notFound": "Nenhum Pagamento encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Pagamento Emolumento {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Pagamento {{ id }}?"
       },
       "detail": {
-        "title": "Pagamento Emolumento"
+        "title": "Pagamento"
       },
-      "data": "Data",
-      "numero": "Numero",
-      "numeroProcesso": "Numero Processo",
-      "nomeAluno": "Nome Aluno",
-      "turmaAluno": "Turma Aluno",
-      "estado": "Estado",
-      "efeitoPagamento": "Efeito Pagamento",
-      "formaLiquidacao": "Forma Liquidacao"
+      "data": "Data do pagamento",
+      "numero": "Refeêrencia do pagamento",
+      "numeroProcesso": "Número do processo",
+      "nomeAluno": "Nome do aluno",
+      "turmaAluno": "Turma do aluno",
+      "estado": "Estado do pagamento",
+      "efeitoPagamento": "Efeito do pagamento",
+      "formaLiquidacao": "Forma de pagamento"
     }
   },
   "pagamentoApp": {

@@ -3,22 +3,22 @@
     "pagamentoCaixa": {
       "home": {
         "title": "Caixas",
-        "createLabel": "Criar novo(a) Caixa",
-        "createOrEditLabel": "Criar ou editar Caixa",
+        "createLabel": "Novo caixa",
+        "createOrEditLabel": "Caixa",
         "search": "Procurar por Caixa",
-        "notFound": "Nenhum Caixas encontrado"
+        "notFound": "Nenhum Caixa encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Caixa {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Caixa {{ id }}?"
       },
       "detail": {
         "title": "Caixa"
       },
-      "descricao": "Descricao",
-      "proprietario": "Proprietario",
-      "numeroConta": "Numero Conta",
-      "iban": "Iban",
-      "ativo": "Ativo",
+      "descricao": "Descrição",
+      "proprietario": "Proprietário",
+      "numeroConta": "Numero da conta",
+      "iban": "IBAN",
+      "ativo": "Ativo?",
       "deposito": "Deposito"
     }
   },

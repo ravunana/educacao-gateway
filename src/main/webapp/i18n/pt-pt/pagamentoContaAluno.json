@@ -2,21 +2,21 @@
   "educacaoApp": {
     "pagamentoContaAluno": {
       "home": {
-        "title": "Conta Alunos",
-        "createLabel": "Criar novo(a) Conta Aluno",
-        "createOrEditLabel": "Criar ou editar Conta Aluno",
+        "title": "Conta do aluno",
+        "createLabel": "Nova conta",
+        "createOrEditLabel": "Conta do aluno",
         "search": "Procurar por Conta Aluno",
-        "notFound": "Nenhum Conta Alunos encontrado"
+        "notFound": "Nenhuma Conta encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Conta Aluno {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Conta {{ id }}?"
       },
       "detail": {
-        "title": "Conta Aluno"
+        "title": "Conta do aluno"
       },
-      "debito": "Debito",
+      "debito": "Debitos",
       "credito": "Credito",
-      "numeroProcesso": "Numero Processo"
+      "numeroProcesso": "Numero do processo"
     }
   },
   "pagamentoApp": {

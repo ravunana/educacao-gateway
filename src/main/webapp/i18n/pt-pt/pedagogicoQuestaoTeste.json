@@ -2,23 +2,23 @@
   "educacaoApp": {
     "pedagogicoQuestaoTeste": {
       "home": {
-        "title": "Questao Testes",
-        "createLabel": "Criar novo(a) Questao Teste",
-        "createOrEditLabel": "Criar ou editar Questao Teste",
-        "search": "Procurar por Questao Teste",
-        "notFound": "Nenhum Questao Testes encontrado"
+        "title": "Perguntas da prova",
+        "createLabel": "Nova pergunta",
+        "createOrEditLabel": "Pergunta da prova",
+        "search": "Procurar por perguntas",
+        "notFound": "Nenhuma pergunta encontrada"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Questao Teste {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a pergunta {{ id }}?"
       },
       "detail": {
-        "title": "Questao Teste"
+        "title": "Pergunta da prova"
       },
-      "grupo": "Grupo",
-      "numero": "Numero",
-      "argumento": "Argumento",
-      "questao": "Questao",
-      "teste": "Teste"
+      "grupo": "Grupo da pergunta",
+      "numero": "Número da pergunta",
+      "argumento": "Argumento | Comentário",
+      "questao": "Pergunta",
+      "teste": "Prova"
     }
   },
   "pedagogicoApp": {

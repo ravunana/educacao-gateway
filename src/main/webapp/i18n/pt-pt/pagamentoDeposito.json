@@ -3,25 +3,25 @@
     "pagamentoDeposito": {
       "home": {
         "title": "Depositos",
-        "createLabel": "Criar novo(a) Deposito",
-        "createOrEditLabel": "Criar ou editar Deposito",
+        "createLabel": "Novo depósito",
+        "createOrEditLabel": "Depósito",
         "search": "Procurar por Deposito",
-        "notFound": "Nenhum Depositos encontrado"
+        "notFound": "Nenhum Deposito encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Deposito {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Deposito {{ id }}?"
       },
       "detail": {
-        "title": "Deposito"
+        "title": "Depósito"
       },
-      "numero": "Numero",
-      "dataDeposito": "Data Deposito",
-      "montante": "Montante",
-      "data": "Data",
-      "anexo": "Anexo",
-      "numeroProcesso": "Numero Processo",
-      "meioLiquidacao": "Meio Liquidacao",
-      "bancoCaixa": "Banco Caixa",
+      "numero": "Refeência do depósito",
+      "dataDeposito": "Data do depósito",
+      "montante": "Montante depositado",
+      "data": "Data da operação",
+      "anexo": "Borderoux",
+      "numeroProcesso": "Número do prrocesso",
+      "meioLiquidacao": "Meio de pagamento",
+      "bancoCaixa": "Nome do Caixa",
       "efeito": "Efeito"
     }
   },

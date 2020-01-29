@@ -3,32 +3,32 @@
     "pedagogicoNota": {
       "home": {
         "title": "Notas",
-        "createLabel": "Criar novo(a) Nota",
-        "createOrEditLabel": "Criar ou editar Nota",
+        "createLabel": "Nova nota",
+        "createOrEditLabel": "Nota",
         "search": "Procurar por Nota",
-        "notFound": "Nenhum Notas encontrado"
+        "notFound": "Nenhuma Nota encontrada"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Nota {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Nota {{ id }}?"
       },
       "detail": {
         "title": "Nota"
       },
-      "numeroProcesso": "Numero Processo",
-      "nomeAluno": "Nome Aluno",
+      "numeroProcesso": "Numero do processo",
+      "nomeAluno": "Nome do aluno",
       "disciplina": "Disciplina",
-      "peridoLectivo": "Perido Lectivo",
-      "anoLectivo": "Ano Lectivo",
-      "faltaJustificada": "Falta Justificada",
-      "faltaInjustificada": "Falta Injustificada",
-      "avaliacaoContinuca": "Avaliacao Continuca",
-      "primeiraProva": "Primeira Prova",
-      "segundaProva": "Segunda Prova",
-      "exame": "Exame",
-      "recurso": "Recurso",
-      "exameEspecial": "Exame Especial",
-      "prova": "Prova",
-      "situacao": "Situacao",
+      "peridoLectivo": "Perido lectivo",
+      "anoLectivo": "Ano lectivo",
+      "faltaJustificada": "Nº de Falta justificada",
+      "faltaInjustificada": "Nº de Falta injustificada",
+      "avaliacaoContinuca": "Nota de avaliação continua",
+      "primeiraProva": "Nota primeira prova",
+      "segundaProva": "Nota segunda prova",
+      "exame": "Nota do exame",
+      "recurso": "Nota de recurso",
+      "exameEspecial": "Nota do exame especial",
+      "prova": "Anexo da prova",
+      "situacao": "Situação da disciplina",
       "turma": "Turma",
       "curriculo": "Curriculo",
       "professor": "Professor"

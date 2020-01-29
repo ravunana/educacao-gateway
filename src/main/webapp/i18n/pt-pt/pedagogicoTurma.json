@@ -3,35 +3,35 @@
     "pedagogicoTurma": {
       "home": {
         "title": "Turmas",
-        "createLabel": "Criar novo(a) Turma",
-        "createOrEditLabel": "Criar ou editar Turma",
+        "createLabel": "Nova turma",
+        "createOrEditLabel": "Turma",
         "search": "Procurar por Turma",
-        "notFound": "Nenhum Turmas encontrado"
+        "notFound": "Nenhuma turma encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Turma {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Turma {{ id }}?"
       },
       "detail": {
         "title": "Turma"
       },
-      "descricao": "Descricao",
-      "anoLectivo": "Ano Lectivo",
+      "descricao": "Descrição",
+      "anoLectivo": "Ano lectivo",
       "data": "Data",
       "abertura": "Abertura",
       "encerramento": "Encerramento",
-      "lotacao": "Lotacao",
-      "aberta": "Aberta",
-      "periodoLectivo": "Periodo Lectivo",
+      "lotacao": "Lotação",
+      "aberta": "Aberta?",
+      "periodoLectivo": "Periodo lectivo",
       "turno": "Turno",
       "sala": "Sala",
       "classe": "Classe",
       "horario": "Horario",
-      "planoActividade": "Plano Actividade",
+      "planoActividade": "Plano de actividade",
       "nota": "Nota",
       "aula": "Aula",
       "testeConhecimento": "Teste Conhecimento",
       "curso": "Curso",
-      "coordenador": "Coordenador",
+      "coordenador": "Coordenador da turma",
       "planoAulaTurma": "Plano Aula Turma"
     }
   },

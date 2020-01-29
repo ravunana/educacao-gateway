@@ -2,31 +2,31 @@
   "educacaoApp": {
     "pedagogicoPlanoActividade": {
       "home": {
-        "title": "Plano Actividades",
-        "createLabel": "Criar novo(a) Plano Actividade",
-        "createOrEditLabel": "Criar ou editar Plano Actividade",
-        "search": "Procurar por Plano Actividade",
-        "notFound": "Nenhum Plano Actividades encontrado"
+        "title": "Plano de actividades",
+        "createLabel": "Novo plano de actividade",
+        "createOrEditLabel": "Plano de actividade",
+        "search": "Procurar por Plano de actividade",
+        "notFound": "Nenhum Plano de actividades encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Plano Actividade {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Plano de actividade {{ id }}?"
       },
       "detail": {
-        "title": "Plano Actividade"
+        "title": "Plano de actividade"
       },
-      "numeroActividade": "Numero Actividade",
-      "atividade": "Atividade",
+      "numeroActividade": "Número da actividade",
+      "atividade": "Descrição da actividade",
       "objectivos": "Objectivos",
       "de": "De",
-      "ate": "Ate",
-      "responsavel": "Responsavel",
-      "local": "Local",
-      "observacao": "Observacao",
+      "ate": "Até",
+      "responsavel": "Responsável da actividade",
+      "local": "Local da actividade",
+      "observacao": "Observações",
       "participantes": "Participantes",
-      "coResponsavel": "Co Responsavel",
-      "anoLectivo": "Ano Lectivo",
-      "statusActividade": "Status Actividade",
-      "periodoLectivo": "Periodo Lectivo",
+      "coResponsavel": "Sub responsável",
+      "anoLectivo": "Ano lectivo",
+      "statusActividade": "Estado da actividade",
+      "periodoLectivo": "Periodo lectivo de realização",
       "turno": "Turno",
       "classe": "Classe",
       "curso": "Curso",

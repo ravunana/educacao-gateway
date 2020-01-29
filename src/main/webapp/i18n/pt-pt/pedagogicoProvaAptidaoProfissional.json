@@ -2,29 +2,29 @@
   "educacaoApp": {
     "pedagogicoProvaAptidaoProfissional": {
       "home": {
-        "title": "Prova Aptidao Profissionals",
-        "createLabel": "Criar novo(a) Prova Aptidao Profissional",
-        "createOrEditLabel": "Criar ou editar Prova Aptidao Profissional",
-        "search": "Procurar por Prova Aptidao Profissional",
-        "notFound": "Nenhum Prova Aptidao Profissionals encontrado"
+        "title": "Prova de pptidão profissional",
+        "createLabel": "Nova nota PAP",
+        "createOrEditLabel": "Prova de aptidão profissional",
+        "search": "Procurar por PAP's",
+        "notFound": "Nenhuma PAP encontrada"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Prova Aptidao Profissional {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a PAP {{ id }}?"
       },
       "detail": {
-        "title": "Prova Aptidao Profissional"
+        "title": "PAP"
       },
-      "numeroProcesso": "Numero Processo",
-      "nomeAluno": "Nome Aluno",
-      "livroRegistro": "Livro Registro",
-      "folhaRegistro": "Folha Registro",
-      "temaProjectoTecnologio": "Tema Projecto Tecnologio",
-      "notaProjectoTecnologio": "Nota Projecto Tecnologio",
-      "dataDefesa": "Data Defesa",
-      "localEstagio": "Local Estagio",
-      "aproveitamentoEstagio": "Aproveitamento Estagio",
-      "inicioEstagio": "Inicio Estagio",
-      "finalEstagio": "Final Estagio",
+      "numeroProcesso": "Número de processo",
+      "nomeAluno": "Nome do aluno",
+      "livroRegistro": "Livro de registro",
+      "folhaRegistro": "Folha de registro",
+      "temaProjectoTecnologio": "Tema do projecto tecnológio",
+      "notaProjectoTecnologio": "Nota do projecto tecnológio",
+      "dataDefesa": "Data da defesa",
+      "localEstagio": "Local do estágio",
+      "aproveitamentoEstagio": "Aproveitamento no estágio",
+      "inicioEstagio": "Inicio do estágio",
+      "finalEstagio": "Final do estágio",
       "data": "Data"
     }
   },

@@ -2,26 +2,26 @@
   "educacaoApp": {
     "contactoInstituicao": {
       "home": {
-        "title": "Contacto Instituicaos",
-        "createLabel": "Criar novo(a) Contacto Instituicao",
-        "createOrEditLabel": "Criar ou editar Contacto Instituicao",
-        "search": "Procurar por Contacto Instituicao",
-        "notFound": "Nenhum Contacto Instituicaos encontrado"
+        "title": "Contacto",
+        "createLabel": "Novo contacto",
+        "createOrEditLabel": "Contacto",
+        "search": "Procurar por Contacto",
+        "notFound": "Nenhum Contacto encontrado"
       },
-      "created": "Um novo Contacto Instituicao foi criado com o identificador {{ param }}",
-      "updated": "Contacto Instituicao com identificador {{ param }} foi actualizado",
-      "deleted": "Contacto Instituicao com identificador {{ param }} foi eliminado",
+      "created": "Um novo Contacto foi criado com o identificador {{ param }}",
+      "updated": "Contacto com identificador {{ param }} foi actualizado",
+      "deleted": "Contacto com identificador {{ param }} foi eliminado",
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Contacto Instituicao {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Contacto {{ id }}?"
       },
       "detail": {
-        "title": "Contacto Instituicao"
+        "title": "Contacto"
       },
-      "tipoContacto": "Tipo Contacto",
-      "descricao": "Descricao",
+      "tipoContacto": "Tipo de contacto",
+      "descricao": "Departamento",
       "contacto": "Contacto",
-      "mostrarDocumento": "Mostrar Documento",
-      "instituicaoEnsino": "Instituicao Ensino"
+      "mostrarDocumento": "Mostrar no documento?",
+      "instituicaoEnsino": "Instituição de ensino"
     }
   }
 }

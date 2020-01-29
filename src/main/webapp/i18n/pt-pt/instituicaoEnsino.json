@@ -2,41 +2,41 @@
   "educacaoApp": {
     "instituicaoEnsino": {
       "home": {
-        "title": "Instituicao Ensinos",
-        "createLabel": "Criar novo(a) Instituicao Ensino",
-        "createOrEditLabel": "Criar ou editar Instituicao Ensino",
+        "title": "Instituição de ensino",
+        "createLabel": "Nova insituição",
+        "createOrEditLabel": "Instituição de ensino",
         "search": "Procurar por Instituicao Ensino",
-        "notFound": "Nenhum Instituicao Ensinos encontrado"
+        "notFound": "Nenhuma Instituição encontrado"
       },
-      "created": "Um novo Instituicao Ensino foi criado com o identificador {{ param }}",
-      "updated": "Instituicao Ensino com identificador {{ param }} foi actualizado",
-      "deleted": "Instituicao Ensino com identificador {{ param }} foi eliminado",
+      "created": "Uma nova Instituição foi criado com o identificador {{ param }}",
+      "updated": "Instituição com identificador {{ param }} foi actualizado",
+      "deleted": "Instituição com identificador {{ param }} foi eliminado",
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Instituicao Ensino {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Instituição {{ id }}?"
       },
       "detail": {
-        "title": "Instituicao Ensino"
+        "title": "Instituição de ensino"
       },
       "nome": "Nome",
       "logotipo": "Logotipo",
-      "fundacao": "Fundacao",
-      "fundador": "Fundador",
-      "numero": "Numero",
-      "dimensao": "Dimensao",
-      "sede": "Sede",
-      "tipoVinculo": "Tipo Vinculo",
-      "unidadePagadora": "Unidade Pagadora",
-      "tipoInstalacao": "Tipo Instalacao",
-      "provincia": "Provincia",
-      "municipio": "Municipio",
+      "fundacao": "Data de fundação",
+      "fundador": "Nome do proprietario",
+      "numero": "Número da instituição",
+      "dimensao": "Dimensão (LarguraXComprimento)",
+      "sede": "Instituição sede?",
+      "tipoVinculo": "Tipo de vinculo",
+      "unidadePagadora": "Unidade pagadora",
+      "tipoInstalacao": "Tipo de instalações",
+      "provincia": "Província",
+      "municipio": "Munícipio",
       "bairro": "Bairro",
       "rua": "Rua",
-      "quarteirao": "Quarteirao",
-      "numeroPorta": "Numero Porta",
-      "instituicaoEnsino": "Instituicao Ensino",
-      "contactoInstituicao": "Contacto Instituicao",
-      "licencaSoftware": "Licenca Software",
-      "assinaturaDigital": "Assinatura Digital",
+      "quarteirao": "Quarteirão",
+      "numeroPorta": "Número da porta",
+      "instituicaoEnsino": "Instituição de ensino",
+      "contactoInstituicao": "Contacto",
+      "licencaSoftware": "Licença do software",
+      "assinaturaDigital": "Assinatura",
       "hierarquia": "Hierarquia"
     }
   }

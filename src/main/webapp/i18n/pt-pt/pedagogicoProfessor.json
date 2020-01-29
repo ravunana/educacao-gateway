@@ -2,14 +2,14 @@
   "educacaoApp": {
     "pedagogicoProfessor": {
       "home": {
-        "title": "Professors",
-        "createLabel": "Criar novo(a) Professor",
-        "createOrEditLabel": "Criar ou editar Professor",
+        "title": "Professores",
+        "createLabel": "Novo professor",
+        "createOrEditLabel": "Professor",
         "search": "Procurar por Professor",
-        "notFound": "Nenhum Professors encontrado"
+        "notFound": "Nenhum Professor encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Professor {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Professor {{ id }}?"
       },
       "detail": {
         "title": "Professor"
@@ -17,20 +17,20 @@
       "nome": "Nome",
       "sexo": "Sexo",
       "fotografia": "Fotografia",
-      "contacto": "Contacto",
+      "contacto": "Telefone",
       "email": "Email",
-      "residencia": "Residencia",
-      "numeroAgente": "Numero Agente",
-      "utilizadorId": "Utilizador Id",
-      "grauAcademico": "Grau Academico",
-      "cursoAcademico": "Curso Academico",
-      "observacao": "Observacao",
-      "ativo": "Ativo",
+      "residencia": "Morada",
+      "numeroAgente": "Número de agente",
+      "utilizadorId": "Utilizador",
+      "grauAcademico": "Grau academico",
+      "cursoAcademico": "Curso academico",
+      "observacao": "Observação",
+      "ativo": "Activo ?",
       "horario": "Horario",
       "turma": "Turma",
-      "planoAula": "Plano Aula",
+      "planoAula": "Plano de aula",
       "nota": "Nota",
-      "testeConhecimento": "Teste Conhecimento"
+      "testeConhecimento": "Teste de conhecimento"
     }
   },
   "pedagogicoApp": {

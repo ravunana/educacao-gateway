@@ -2,20 +2,20 @@
   "educacaoApp": {
     "pedagogicoRespostaQuestao": {
       "home": {
-        "title": "Resposta Questaos",
-        "createLabel": "Criar novo(a) Resposta Questao",
-        "createOrEditLabel": "Criar ou editar Resposta Questao",
-        "search": "Procurar por Resposta Questao",
-        "notFound": "Nenhum Resposta Questaos encontrado"
+        "title": "Resposta da pergunta",
+        "createLabel": "Nova resposta",
+        "createOrEditLabel": "Resposta da pergunta",
+        "search": "Procurar por Resposta da pergunta",
+        "notFound": "Nenhum Resposta encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Resposta Questao {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Resposta {{ id }}?"
       },
       "detail": {
-        "title": "Resposta Questao"
+        "title": "Resposta da pergunta"
       },
       "resposta": "Resposta",
-      "questao": "Questao"
+      "questao": "Pergunta"
     }
   },
   "pedagogicoApp": {

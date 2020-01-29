@@ -2,28 +2,28 @@
   "educacaoApp": {
     "pagamentoEfeitoPagamento": {
       "home": {
-        "title": "Efeito Pagamentos",
-        "createLabel": "Criar novo(a) Efeito Pagamento",
-        "createOrEditLabel": "Criar ou editar Efeito Pagamento",
+        "title": "Efeito de pagamento",
+        "createLabel": "Novo efeito de pagamento",
+        "createOrEditLabel": "Efeito de pagamento",
         "search": "Procurar por Efeito Pagamento",
-        "notFound": "Nenhum Efeito Pagamentos encontrado"
+        "notFound": "Nenhum Efeito de Pagamentos encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Efeito Pagamento {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Efeito do pagamento {{ id }}?"
       },
       "detail": {
-        "title": "Efeito Pagamento"
+        "title": "Efeito de pagamento"
       },
-      "descricao": "Descricao",
+      "descricao": "Descrição",
       "quantidade": "Quantidade",
-      "montante": "Montante",
-      "desconto": "Desconto",
-      "multa": "Multa",
-      "juro": "Juro",
+      "montante": "Montante pago",
+      "desconto": "Valor de Desconto",
+      "multa": "Valor da multa",
+      "juro": "Taxa de juro",
       "data": "Data",
-      "vencimento": "Vencimento",
-      "quitado": "Quitado",
-      "deposito": "Deposito",
+      "vencimento": "Data de vencimento",
+      "quitado": "Pago?",
+      "deposito": "Depósito",
       "emolumento": "Emolumento",
       "pagamento": "Pagamento"
     }

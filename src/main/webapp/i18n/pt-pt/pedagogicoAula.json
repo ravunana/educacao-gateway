@@ -3,23 +3,23 @@
     "pedagogicoAula": {
       "home": {
         "title": "Aulas",
-        "createLabel": "Criar novo(a) Aula",
-        "createOrEditLabel": "Criar ou editar Aula",
+        "createLabel": "Nova aula",
+        "createOrEditLabel": "Aula",
         "search": "Procurar por Aula",
-        "notFound": "Nenhum Aulas encontrado"
+        "notFound": "Nenhuma Aula encontrada"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Aula {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Aula {{ id }}?"
       },
       "detail": {
         "title": "Aula"
       },
       "data": "Data",
-      "sumario": "Sumario",
-      "licao": "Licao",
-      "dada": "Dada",
+      "sumario": "Sumário",
+      "licao": "Número da lição",
+      "dada": "Aula dada?",
       "chamada": "Chamada",
-      "planoAula": "Plano Aula",
+      "planoAula": "Plano de aula",
       "turma": "Turma",
       "curriulo": "Curriulo"
     }

@@ -2,30 +2,30 @@
   "educacaoApp": {
     "licencaSoftware": {
       "home": {
-        "title": "Licenca Softwares",
-        "createLabel": "Criar novo(a) Licenca Software",
-        "createOrEditLabel": "Criar ou editar Licenca Software",
+        "title": "Licença do software",
+        "createLabel": "Nova licença",
+        "createOrEditLabel": "Licença do software",
         "search": "Procurar por Licenca Software",
-        "notFound": "Nenhum Licenca Softwares encontrado"
+        "notFound": "Nenhuma Licença encontrado"
       },
-      "created": "Um novo Licenca Software foi criado com o identificador {{ param }}",
-      "updated": "Licenca Software com identificador {{ param }} foi actualizado",
-      "deleted": "Licenca Software com identificador {{ param }} foi eliminado",
+      "created": "Uma nova Licença Software foi criado com o identificador {{ param }}",
+      "updated": "Licenca com identificador {{ param }} foi actualizado",
+      "deleted": "Licenca com identificador {{ param }} foi eliminado",
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Licenca Software {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a Licença {{ id }}?"
       },
       "detail": {
-        "title": "Licenca Software"
+        "title": "Licença"
       },
-      "tipoSubscricao": "Tipo Subscricao",
+      "tipoSubscricao": "Tipo de subscrição",
       "inicio": "Inicio",
       "fim": "Fim",
       "data": "Data",
       "valor": "Valor",
-      "codigo": "Codigo",
-      "numeroUsuario": "Numero Usuario",
-      "numeroInstituicaoEnsino": "Numero Instituicao Ensino",
-      "instituicaoEnsino": "Instituicao Ensino",
+      "codigo": "Código da licença",
+      "numeroUsuario": "Quantidade de usuarios",
+      "numeroInstituicaoEnsino": "Quantidade de tenant",
+      "instituicaoEnsino": "Instituição de ensino",
       "software": "Software"
     }
   }

@@ -2,21 +2,21 @@
   "educacaoApp": {
     "pedagogicoChamada": {
       "home": {
-        "title": "Chamadas",
-        "createLabel": "Criar novo(a) Chamada",
-        "createOrEditLabel": "Criar ou editar Chamada",
+        "title": "Presença do aluno",
+        "createLabel": "Nova chamada",
+        "createOrEditLabel": "Presença do aluno",
         "search": "Procurar por Chamada",
-        "notFound": "Nenhum Chamadas encontrado"
+        "notFound": "Nenhuma Chamada feita"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Chamada {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar a presença do aluno {{ id }}?"
       },
       "detail": {
         "title": "Chamada"
       },
       "data": "Data",
-      "presente": "Presente",
-      "numeroProcesso": "Numero Processo",
+      "presente": "Presente ?",
+      "numeroProcesso": "Número do processo",
       "aula": "Aula"
     }
   },

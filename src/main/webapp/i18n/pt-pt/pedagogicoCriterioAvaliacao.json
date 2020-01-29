@@ -2,27 +2,27 @@
   "educacaoApp": {
     "pedagogicoCriterioAvaliacao": {
       "home": {
-        "title": "Criterio Avaliacaos",
-        "createLabel": "Criar novo(a) Criterio Avaliacao",
-        "createOrEditLabel": "Criar ou editar Criterio Avaliacao",
+        "title": "Criterio de avaliação",
+        "createLabel": "Novo criterio de avaliaçãp",
+        "createOrEditLabel": "Criterio de avaliação",
         "search": "Procurar por Criterio Avaliacao",
-        "notFound": "Nenhum Criterio Avaliacaos encontrado"
+        "notFound": "Nenhum Criterio de avaliação encontrado"
       },
       "delete": {
-        "question": "Tem a certeza que pretende eliminar o(a) Criterio Avaliacao {{ id }}?"
+        "question": "Tem a certeza que pretende eliminar o Criterio de avaliação {{ id }}?"
       },
       "detail": {
-        "title": "Criterio Avaliacao"
+        "title": "Criterio de avaliação"
       },
-      "aprovaCom": "Aprova Com",
-      "reporvaCom": "Reporva Com",
-      "recursoCom": "Recurso Com",
-      "fazExame": "Faz Exame",
-      "fazRecurso": "Faz Recurso",
-      "fazExameEspecial": "Faz Exame Especial",
-      "numeroFaltaReprova": "Numero Falta Reprova",
-      "notaMinimaAprovacao": "Nota Minima Aprovacao",
-      "planoCurricular": "Plano Curricular"
+      "aprovaCom": "Nota maxima aprovação",
+      "reporvaCom": "Nota minima de reprovação",
+      "recursoCom": "Nota para ir no recurso",
+      "fazExame": "Faz exame?",
+      "fazRecurso": "Faz recurso?",
+      "fazExameEspecial": "Faz exame especial",
+      "numeroFaltaReprova": "Número de falta para reprovação",
+      "notaMinimaAprovacao": "Nota minima aprovação",
+      "planoCurricular": "Plano curricular"
     }
   },
   "pedagogicoApp": {
