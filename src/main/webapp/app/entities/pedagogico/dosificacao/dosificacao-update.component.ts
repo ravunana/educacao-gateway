@@ -15,6 +15,7 @@ import { ICurso } from 'app/shared/model/pedagogico/curso.model';
 import { CursoService } from 'app/entities/pedagogico/curso/curso.service';
 import { IPlanoCurricular } from 'app/shared/model/pedagogico/plano-curricular.model';
 import { PlanoCurricularService } from 'app/entities/pedagogico/plano-curricular/plano-curricular.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 type SelectableEntity = ICurso | IPlanoCurricular;
 
@@ -24,6 +25,8 @@ type SelectableEntity = ICurso | IPlanoCurricular;
 })
 export class DosificacaoUpdateComponent implements OnInit {
   isSaving = false;
+
+  periodosLectivo: any;
 
   cursos: ICurso[] = [];
 
@@ -55,7 +58,8 @@ export class DosificacaoUpdateComponent implements OnInit {
     protected cursoService: CursoService,
     protected planoCurricularService: PlanoCurricularService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +83,9 @@ export class DosificacaoUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IPlanoCurricular[]) => (this.planocurriculars = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 11 }).subscribe(data => {
+      this.periodosLectivo = data.body;
     });
   }
 

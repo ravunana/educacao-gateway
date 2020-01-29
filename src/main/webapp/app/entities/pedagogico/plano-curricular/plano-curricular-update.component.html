@@ -50,8 +50,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoCurricular.periodoLectivo" for="field_periodoLectivo">Periodo Lectivo</label>
-                    <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
-                           formControlName="periodoLectivo"/>
+                    <!-- <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                           formControlName="periodoLectivo"/> -->
+
+                        <select class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                        formControlName="periodoLectivo">
+                         <option [ngValue]="opcao.nome" *ngFor="let opcao of periodosLectivos" > {{ opcao.nome }} </option>
+                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoCurricular.componente" for="field_componente">Componente</label>
@@ -66,8 +71,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoCurricular.disciplina" for="field_disciplina">Disciplina</label>
-                    <input type="text" class="form-control" name="disciplina" id="field_disciplina"
-                           formControlName="disciplina"/>
+                    <!-- <input type="text" class="form-control" name="disciplina" id="field_disciplina"
+                           formControlName="disciplina"/> -->
+                        <select class="form-control" name="disciplina" id="field_disciplina"
+                        formControlName="disciplina">
+                         <option [ngValue]="opcao.nome" *ngFor="let opcao of disciplinas" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('disciplina')!.invalid && (editForm.get('disciplina')!.dirty || editForm.get('disciplina')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('disciplina')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -77,8 +85,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoCurricular.classe" for="field_classe">Classe</label>
-                    <input type="number" class="form-control" name="classe" id="field_classe"
-                           formControlName="classe"/>
+                    <!-- <input type="number" class="form-control" name="classe" id="field_classe"
+                           formControlName="classe"/> -->
+                        <select class="form-control" name="classe" id="field_classe"
+                        formControlName="classe">
+                         <option [ngValue]="opcao.sigla" *ngFor="let opcao of classes" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('classe')!.invalid && (editForm.get('classe')!.dirty || editForm.get('classe')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('classe')?.errors?.required" jhiTranslate="entity.validation.required">

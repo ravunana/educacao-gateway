@@ -10,6 +10,7 @@ import { IPlanoCurricular, PlanoCurricular } from 'app/shared/model/pedagogico/p
 import { PlanoCurricularService } from './plano-curricular.service';
 import { ICurso } from 'app/shared/model/pedagogico/curso.model';
 import { CursoService } from 'app/entities/pedagogico/curso/curso.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 @Component({
   selector: 'rv-plano-curricular-update',
@@ -19,6 +20,10 @@ export class PlanoCurricularUpdateComponent implements OnInit {
   isSaving = false;
 
   cursos: ICurso[] = [];
+  periodosLectivos: any;
+  componentes: any;
+  disciplinas: any;
+  classes: any;
 
   editForm = this.fb.group({
     id: [],
@@ -36,7 +41,8 @@ export class PlanoCurricularUpdateComponent implements OnInit {
     protected planoCurricularService: PlanoCurricularService,
     protected cursoService: CursoService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +57,18 @@ export class PlanoCurricularUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: ICurso[]) => (this.cursos = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 11 }).subscribe(data => {
+      this.periodosLectivos = data.body;
+    });
+    // this.lookupService.query({ 'entidadeId.equals': 9 }).subscribe(data => {
+    //   this.componentes = data.body;
+    // });
+    this.lookupService.query({ 'entidadeId.equals': 12 }).subscribe(data => {
+      this.disciplinas = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 13 }).subscribe(data => {
+      this.classes = data.body;
     });
   }
 

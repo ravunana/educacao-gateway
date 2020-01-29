@@ -113,8 +113,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.periodoLectivo" for="field_periodoLectivo">Periodo Lectivo</label>
-                    <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
-                           formControlName="periodoLectivo"/>
+                    <!-- <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                           formControlName="periodoLectivo"/> -->
+
+                        <select class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                        formControlName="periodoLectivo">
+                         <option [ngValue]="opcao.nome" *ngFor="let opcao of periodosLectivos" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('periodoLectivo')!.invalid && (editForm.get('periodoLectivo')!.dirty || editForm.get('periodoLectivo')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('periodoLectivo')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -124,8 +128,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.turno" for="field_turno">Turno</label>
-                    <input type="text" class="form-control" name="turno" id="field_turno"
-                           formControlName="turno"/>
+                    <!-- <input type="text" class="form-control" name="turno" id="field_turno"
+                           formControlName="turno"/> -->
+                        <select class="form-control" name="turno" id="field_turno"
+                        formControlName="turno">
+                         <option [ngValue]="opcao.nome" *ngFor="let opcao of turnos" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('turno')!.invalid && (editForm.get('turno')!.dirty || editForm.get('turno')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('turno')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -135,8 +142,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.sala" for="field_sala">Sala</label>
-                    <input type="number" class="form-control" name="sala" id="field_sala"
-                           formControlName="sala"/>
+                    <!-- <input type="number" class="form-control" name="sala" id="field_sala"
+                           formControlName="sala"/> -->
+                        <select class="form-control" name="sala" id="field_sala"
+                        formControlName="sala">
+                         <option [ngValue]="opcao.nome" *ngFor="let opcao of salas" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('sala')!.invalid && (editForm.get('sala')!.dirty || editForm.get('sala')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('sala')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -150,8 +160,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.classe" for="field_classe">Classe</label>
-                    <input type="number" class="form-control" name="classe" id="field_classe"
-                           formControlName="classe"/>
+                    <!-- <input type="number" class="form-control" name="classe" id="field_classe"
+                           formControlName="classe"/> -->
+                        <select class="form-control" name="classe" id="field_classe"
+                        formControlName="classe">
+                         <option [ngValue]="opcao.sigla" *ngFor="let opcao of classes" > {{ opcao.nome }} </option>
                     <div *ngIf="editForm.get('classe')!.invalid && (editForm.get('classe')!.dirty || editForm.get('classe')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('classe')?.errors?.required" jhiTranslate="entity.validation.required">

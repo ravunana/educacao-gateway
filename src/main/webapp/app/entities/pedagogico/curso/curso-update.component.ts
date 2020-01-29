@@ -9,6 +9,7 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { ICurso, Curso } from 'app/shared/model/pedagogico/curso.model';
 import { CursoService } from './curso.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 @Component({
   selector: 'rv-curso-update',
@@ -16,6 +17,7 @@ import { AlertError } from 'app/shared/alert/alert-error.model';
 })
 export class CursoUpdateComponent implements OnInit {
   isSaving = false;
+  areasFormacao: any;
 
   editForm = this.fb.group({
     id: [],
@@ -30,12 +32,16 @@ export class CursoUpdateComponent implements OnInit {
     protected eventManager: JhiEventManager,
     protected cursoService: CursoService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ curso }) => {
       this.updateForm(curso);
+    });
+    this.lookupService.query({ 'entidadeId.equals': 9 }).subscribe(data => {
+      this.areasFormacao = data.body;
     });
   }
 

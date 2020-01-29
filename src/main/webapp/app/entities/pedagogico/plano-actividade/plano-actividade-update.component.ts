@@ -15,6 +15,7 @@ import { ICurso } from 'app/shared/model/pedagogico/curso.model';
 import { CursoService } from 'app/entities/pedagogico/curso/curso.service';
 import { ITurma } from 'app/shared/model/pedagogico/turma.model';
 import { TurmaService } from 'app/entities/pedagogico/turma/turma.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 type SelectableEntity = ICurso | ITurma;
 
@@ -24,6 +25,11 @@ type SelectableEntity = ICurso | ITurma;
 })
 export class PlanoActividadeUpdateComponent implements OnInit {
   isSaving = false;
+
+  statusActividade: any;
+  periodosLectivo: any;
+  turnos: any;
+  classes: any;
 
   cursos: ICurso[] = [];
 
@@ -59,7 +65,8 @@ export class PlanoActividadeUpdateComponent implements OnInit {
     protected cursoService: CursoService,
     protected turmaService: TurmaService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -83,6 +90,18 @@ export class PlanoActividadeUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: ITurma[]) => (this.turmas = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 14 }).subscribe(data => {
+      this.turnos = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 13 }).subscribe(data => {
+      this.classes = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 11 }).subscribe(data => {
+      this.periodosLectivo = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 21 }).subscribe(data => {
+      this.statusActividade = data.body;
     });
   }
 

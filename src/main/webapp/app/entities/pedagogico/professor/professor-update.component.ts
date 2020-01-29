@@ -9,6 +9,8 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IProfessor, Professor } from 'app/shared/model/pedagogico/professor.model';
 import { ProfessorService } from './professor.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
+import { EntidadeSistemaService } from 'app/entities/entidade-sistema/entidade-sistema.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 @Component({
   selector: 'rv-professor-update',
@@ -16,6 +18,7 @@ import { AlertError } from 'app/shared/alert/alert-error.model';
 })
 export class ProfessorUpdateComponent implements OnInit {
   isSaving = false;
+  sexos: any;
 
   editForm = this.fb.group({
     id: [],
@@ -39,12 +42,16 @@ export class ProfessorUpdateComponent implements OnInit {
     protected eventManager: JhiEventManager,
     protected professorService: ProfessorService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ professor }) => {
       this.updateForm(professor);
+    });
+    this.lookupService.query({ 'entidadeId.equals': 8 }).subscribe(data => {
+      this.sexos = data.body;
     });
   }
 

@@ -14,6 +14,7 @@ import { ICurso } from 'app/shared/model/pedagogico/curso.model';
 import { CursoService } from 'app/entities/pedagogico/curso/curso.service';
 import { IProfessor } from 'app/shared/model/pedagogico/professor.model';
 import { ProfessorService } from 'app/entities/pedagogico/professor/professor.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 type SelectableEntity = ICurso | IProfessor;
 
@@ -23,6 +24,11 @@ type SelectableEntity = ICurso | IProfessor;
 })
 export class TurmaUpdateComponent implements OnInit {
   isSaving = false;
+
+  salas: any;
+  periodosLectivos: any;
+  turnos: any;
+  classes: any;
 
   cursos: ICurso[] = [];
 
@@ -52,7 +58,8 @@ export class TurmaUpdateComponent implements OnInit {
     protected cursoService: CursoService,
     protected professorService: ProfessorService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +83,18 @@ export class TurmaUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IProfessor[]) => (this.professors = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 11 }).subscribe(data => {
+      this.periodosLectivos = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 13 }).subscribe(data => {
+      this.classes = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 14 }).subscribe(data => {
+      this.turnos = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 15 }).subscribe(data => {
+      this.salas = data.body;
     });
   }
 

@@ -50,8 +50,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoCurso.areaFormacao" for="field_areaFormacao">Area Formacao</label>
-                    <input type="text" class="form-control" name="areaFormacao" id="field_areaFormacao"
-                           formControlName="areaFormacao"/>
+                    <!-- <input type="text" class="form-control" name="areaFormacao" id="field_areaFormacao"
+                           formControlName="areaFormacao"/> -->
+                           
+                        <select class="form-control" name="areaFormacao" id="field_areaFormacao"
+                           formControlName="areaFormacao">
+                            <option [ngValue]="opcao.nome" *ngFor="let opcao of areasFormacao" > {{ opcao.nome }} </option>
+                        </select>
                     <div *ngIf="editForm.get('areaFormacao')!.invalid && (editForm.get('areaFormacao')!.dirty || editForm.get('areaFormacao')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('areaFormacao')?.errors?.required" jhiTranslate="entity.validation.required">

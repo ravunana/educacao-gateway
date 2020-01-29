@@ -11,8 +11,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoDosificacao.peridoLective" for="field_peridoLective">Perido Lective</label>
-                    <input type="text" class="form-control" name="peridoLective" id="field_peridoLective"
-                           formControlName="peridoLective"/>
+                    <!-- <input type="text" class="form-control" name="peridoLective" id="field_peridoLective"
+                           formControlName="peridoLective"/> --> 
+                    <select class="form-control" name="peridoLective" id="field_peridoLective"
+                    formControlName="peridoLective">
+                    <option [ngValue]="opcao.sigla" *ngFor="let opcao of periodosLectivo">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('peridoLective')!.invalid && (editForm.get('peridoLective')!.dirty || editForm.get('peridoLective')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('peridoLective')?.errors?.required" jhiTranslate="entity.validation.required">

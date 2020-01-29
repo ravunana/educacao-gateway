@@ -124,23 +124,39 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoActividade.statusActividade" for="field_statusActividade">Status Actividade</label>
-                    <input type="text" class="form-control" name="statusActividade" id="field_statusActividade"
-                           formControlName="statusActividade"/>
+                    <!-- <input type="text" class="form-control" name="statusActividade" id="field_statusActividade"
+                           formControlName="statusActividade"/> -->       
+                    <select class="form-control" name="statusActividade" id="field_statusActividade"
+                    formControlName="statusActividade">
+                        <option [ngValue]="opcao.nome" *ngFor="let opcao of statusActividade">{{opcao.nome}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoActividade.periodoLectivo" for="field_periodoLectivo">Periodo Lectivo</label>
-                    <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
-                           formControlName="periodoLectivo"/>
+                    <!-- <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                           formControlName="periodoLectivo"/> -->      
+                    <select class="form-control" name="periodoLectivo" id="field_periodoLectivo"
+                    formControlName="periodoLectivo">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of periodosLectivo">{{opcao.nome}}</option>
+                </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoActividade.turno" for="field_turno">Turno</label>
-                    <input type="text" class="form-control" name="turno" id="field_turno"
-                           formControlName="turno"/>
+                    <!-- <input type="text" class="form-control" name="turno" id="field_turno"
+                           formControlName="turno"/> -->      
+                    <select class="form-control" name="turno" id="field_turno"
+                    formControlName="turno">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of turnos">{{opcao.nome}}</option>
+                </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoPlanoActividade.classe" for="field_classe">Classe</label>
-                    <input type="number" class="form-control" name="classe" id="field_classe"
-                           formControlName="classe"/>
+                    <!-- <input type="number" class="form-control" name="classe" id="field_classe"
+                           formControlName="classe"/> -->      
+                    <select class="form-control" name="classe" id="field_classe"
+                    formControlName="classe">
+                    <option [ngValue]="opcao.sigla" *ngFor="let opcao of classes">{{opcao.nome}}</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

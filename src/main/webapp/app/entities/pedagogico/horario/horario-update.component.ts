@@ -16,6 +16,7 @@ import { IProfessor } from 'app/shared/model/pedagogico/professor.model';
 import { ProfessorService } from 'app/entities/pedagogico/professor/professor.service';
 import { IPlanoCurricular } from 'app/shared/model/pedagogico/plano-curricular.model';
 import { PlanoCurricularService } from 'app/entities/pedagogico/plano-curricular/plano-curricular.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 type SelectableEntity = ITurma | IProfessor | IPlanoCurricular;
 
@@ -25,6 +26,11 @@ type SelectableEntity = ITurma | IProfessor | IPlanoCurricular;
 })
 export class HorarioUpdateComponent implements OnInit {
   isSaving = false;
+
+  categorias: any;
+  diasSemana: any;
+  entradas: any;
+  saidas: any;
 
   turmas: ITurma[] = [];
 
@@ -51,7 +57,8 @@ export class HorarioUpdateComponent implements OnInit {
     protected professorService: ProfessorService,
     protected planoCurricularService: PlanoCurricularService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -84,6 +91,18 @@ export class HorarioUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IPlanoCurricular[]) => (this.planocurriculars = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 20 }).subscribe(data => {
+      this.categorias = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 18 }).subscribe(data => {
+      this.diasSemana = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 16 }).subscribe(data => {
+      this.entradas = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 17 }).subscribe(data => {
+      this.saidas = data.body;
     });
   }
 
