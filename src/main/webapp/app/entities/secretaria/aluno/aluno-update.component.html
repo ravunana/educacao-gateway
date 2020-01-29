@@ -22,8 +22,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.sexo" for="field_sexo">Sexo</label>
-                    <input type="text" class="form-control" name="sexo" id="field_sexo"
-                           formControlName="sexo"/>
+                    <!-- <input type="text" class="form-control" name="sexo" id="field_sexo"
+                           formControlName="sexo"/> -->
+                    <select  class="form-control" name="sexo" id="field_sexo"
+                    formControlName="sexo">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of sexos">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('sexo')!.invalid && (editForm.get('sexo')!.dirty || editForm.get('sexo')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('sexo')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -87,8 +91,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.nacionalidade" for="field_nacionalidade">Nacionalidade</label>
-                    <input type="text" class="form-control" name="nacionalidade" id="field_nacionalidade"
-                           formControlName="nacionalidade"/>
+                    <!-- <input type="text" class="form-control" name="nacionalidade" id="field_nacionalidade"
+                           formControlName="nacionalidade"/> -->
+                    <select class="form-control" name="nacionalidade" id="field_nacionalidade"
+                    formControlName="nacionalidade">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of paises">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('nacionalidade')!.invalid && (editForm.get('nacionalidade')!.dirty || editForm.get('nacionalidade')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('nacionalidade')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -98,8 +106,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.naturalidade" for="field_naturalidade">Naturalidade</label>
-                    <input type="text" class="form-control" name="naturalidade" id="field_naturalidade"
-                           formControlName="naturalidade"/>
+                    <!-- <input type="text" class="form-control" name="naturalidade" id="field_naturalidade"
+                           formControlName="naturalidade"/> -->
+                    <select class="form-control" name="naturalidade" id="field_naturalidade"
+                    formControlName="naturalidade">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of municipios">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('naturalidade')!.invalid && (editForm.get('naturalidade')!.dirty || editForm.get('naturalidade')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('naturalidade')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -127,8 +139,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.tipoDocumento" for="field_tipoDocumento">Tipo Documento</label>
-                    <input type="text" class="form-control" name="tipoDocumento" id="field_tipoDocumento"
-                           formControlName="tipoDocumento"/>
+                    <!-- <input type="text" class="form-control" name="tipoDocumento" id="field_tipoDocumento"
+                           formControlName="tipoDocumento"/> -->
+                    <select class="form-control" name="tipoDocumento" id="field_tipoDocumento"
+                    formControlName="tipoDocumento">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of tiposDocumento">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('tipoDocumento')!.invalid && (editForm.get('tipoDocumento')!.dirty || editForm.get('tipoDocumento')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('tipoDocumento')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -179,8 +195,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.localEmissao" for="field_localEmissao">Local Emissao</label>
-                    <input type="text" class="form-control" name="localEmissao" id="field_localEmissao"
-                           formControlName="localEmissao"/>
+                    <!-- <input type="text" class="form-control" name="localEmissao" id="field_localEmissao"
+                           formControlName="localEmissao"/> -->
+                    <select class="form-control" name="localEmissao" id="field_localEmissao"
+                    formControlName="localEmissao">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of municipios">{{opcao.nome}}</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.nif" for="field_nif">Nif</label>
@@ -191,8 +212,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.provincia" for="field_provincia">Provincia</label>
-                    <input type="text" class="form-control" name="provincia" id="field_provincia"
-                           formControlName="provincia"/>
+                    <!-- <input type="text" class="form-control" name="provincia" id="field_provincia"
+                           formControlName="provincia"/> -->
+                    <select class="form-control" name="provincia" id="field_provincia"
+                    formControlName="provincia">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of provincias">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('provincia')!.invalid && (editForm.get('provincia')!.dirty || editForm.get('provincia')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('provincia')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -202,8 +227,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.municipio" for="field_municipio">Municipio</label>
-                    <input type="text" class="form-control" name="municipio" id="field_municipio"
-                           formControlName="municipio"/>
+                    <!-- <input type="text" class="form-control" name="municipio" id="field_municipio"
+                           formControlName="municipio"/> -->
+                    <select class="form-control" name="municipio" id="field_municipio"
+                    formControlName="municipio">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of municipios">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('municipio')!.invalid && (editForm.get('municipio')!.dirty || editForm.get('municipio')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('municipio')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -280,8 +309,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.grupoSanguinio" for="field_grupoSanguinio">Grupo Sanguinio</label>
-                    <input type="text" class="form-control" name="grupoSanguinio" id="field_grupoSanguinio"
-                           formControlName="grupoSanguinio"/>
+                    <!-- <input type="text" class="form-control" name="grupoSanguinio" id="field_grupoSanguinio"
+                           formControlName="grupoSanguinio"/> -->
+                    <select class="form-control" name="grupoSanguinio" id="field_grupoSanguinio"
+                    formControlName="grupoSanguinio">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of gruposSanguinio">{{opcao.nome}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.autorizaMedicamento" for="field_autorizaMedicamento">Autoriza Medicamento</label>
@@ -376,8 +409,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.situacaoAnterior" for="field_situacaoAnterior">Situacao Anterior</label>
-                    <input type="text" class="form-control" name="situacaoAnterior" id="field_situacaoAnterior"
-                           formControlName="situacaoAnterior"/>
+                    <!-- <input type="text" class="form-control" name="situacaoAnterior" id="field_situacaoAnterior"
+                           formControlName="situacaoAnterior"/> -->
+                    <select class="form-control" name="situacaoAnterior" id="field_situacaoAnterior"
+                    formControlName="situacaoAnterior">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of situacaosAcademica">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('situacaoAnterior')!.invalid && (editForm.get('situacaoAnterior')!.dirty || editForm.get('situacaoAnterior')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('situacaoAnterior')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -403,8 +440,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.classeAnterior" for="field_classeAnterior">Classe Anterior</label>
-                    <input type="number" class="form-control" name="classeAnterior" id="field_classeAnterior"
-                           formControlName="classeAnterior"/>
+                    <!-- <input type="number" class="form-control" name="classeAnterior" id="field_classeAnterior"
+                           formControlName="classeAnterior"/> -->
+                    <select  class="form-control" name="classeAnterior" id="field_classeAnterior"
+                    formControlName="classeAnterior">
+                    <option [ngValue]="opcao.sigla" *ngFor="let opcao of classes">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('classeAnterior')!.invalid && (editForm.get('classeAnterior')!.dirty || editForm.get('classeAnterior')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('classeAnterior')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -472,8 +513,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaAluno.situacaoAtual" for="field_situacaoAtual">Situacao Atual</label>
-                    <input type="text" class="form-control" name="situacaoAtual" id="field_situacaoAtual"
-                           formControlName="situacaoAtual"/>
+                    <!-- <input type="text" class="form-control" name="situacaoAtual" id="field_situacaoAtual"
+                           formControlName="situacaoAtual"/> -->
+                    <select class="form-control" name="situacaoAtual" id="field_situacaoAtual"
+                    formControlName="situacaoAtual">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of situacaosAcademica">{{opcao.nome}}</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

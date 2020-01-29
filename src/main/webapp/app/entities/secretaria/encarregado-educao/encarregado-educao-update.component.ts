@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { IEncarregadoEducao, EncarregadoEducao } from 'app/shared/model/secretaria/encarregado-educao.model';
 import { EncarregadoEducaoService } from './encarregado-educao.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 @Component({
   selector: 'rv-encarregado-educao-update',
@@ -14,6 +15,9 @@ import { EncarregadoEducaoService } from './encarregado-educao.service';
 })
 export class EncarregadoEducaoUpdateComponent implements OnInit {
   isSaving = false;
+
+  sexos: any;
+  grausParentesco: any;
 
   editForm = this.fb.group({
     id: [],
@@ -35,12 +39,19 @@ export class EncarregadoEducaoUpdateComponent implements OnInit {
   constructor(
     protected encarregadoEducaoService: EncarregadoEducaoService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ encarregadoEducao }) => {
       this.updateForm(encarregadoEducao);
+    });
+    this.lookupService.query({ 'entidadeId.equals': 8 }).subscribe(data => {
+      this.sexos = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 31 }).subscribe(data => {
+      this.grausParentesco = data.body;
     });
   }
 

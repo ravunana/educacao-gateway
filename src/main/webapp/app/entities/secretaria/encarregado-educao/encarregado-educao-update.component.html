@@ -22,8 +22,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaEncarregadoEducao.sexo" for="field_sexo">Sexo</label>
-                    <input type="text" class="form-control" name="sexo" id="field_sexo"
-                           formControlName="sexo"/>
+                    <!-- <input type="text" class="form-control" name="sexo" id="field_sexo"
+                           formControlName="sexo"/> -->
+                    <select class="form-control" name="sexo" id="field_sexo"
+                    formControlName="sexo">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of sexos">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('sexo')!.invalid && (editForm.get('sexo')!.dirty || editForm.get('sexo')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('sexo')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -109,8 +113,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.secretariaEncarregadoEducao.grauParentesco" for="field_grauParentesco">Grau Parentesco</label>
-                    <input type="text" class="form-control" name="grauParentesco" id="field_grauParentesco"
-                           formControlName="grauParentesco"/>
+                    <!-- <input type="text" class="form-control" name="grauParentesco" id="field_grauParentesco"
+                           formControlName="grauParentesco"/> -->
+                    <select class="form-control" name="grauParentesco" id="field_grauParentesco"
+                    formControlName="grauParentesco">
+                    <option [ngValue]="opcao.nome" *ngFor="let opcao of grausParentesco">{{opcao.nome}}</option>
+                    </select>
                     <div *ngIf="editForm.get('grauParentesco')!.invalid && (editForm.get('grauParentesco')!.dirty || editForm.get('grauParentesco')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('grauParentesco')?.errors?.required" jhiTranslate="entity.validation.required">

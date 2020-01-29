@@ -14,6 +14,7 @@ import { AlunoService } from './aluno.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { IEncarregadoEducao } from 'app/shared/model/secretaria/encarregado-educao.model';
 import { EncarregadoEducaoService } from 'app/entities/secretaria/encarregado-educao/encarregado-educao.service';
+import { LookupService } from 'app/entities/lookup/lookup.service';
 
 @Component({
   selector: 'rv-aluno-update',
@@ -21,6 +22,15 @@ import { EncarregadoEducaoService } from 'app/entities/secretaria/encarregado-ed
 })
 export class AlunoUpdateComponent implements OnInit {
   isSaving = false;
+
+  sexos: any;
+  paises: any;
+  municipios: any;
+  tiposDocumento: any;
+  gruposSanguinio: any;
+  situacaosAcademica: any;
+  classes: any;
+  provincias: any;
 
   encarregadoeducaos: IEncarregadoEducao[] = [];
   nascimentoDp: any;
@@ -83,7 +93,8 @@ export class AlunoUpdateComponent implements OnInit {
     protected encarregadoEducaoService: EncarregadoEducaoService,
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private lookupService: LookupService
   ) {}
 
   ngOnInit(): void {
@@ -98,6 +109,30 @@ export class AlunoUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IEncarregadoEducao[]) => (this.encarregadoeducaos = resBody));
+    });
+    this.lookupService.query({ 'entidadeId.equals': 8 }).subscribe(data => {
+      this.sexos = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 27 }).subscribe(data => {
+      this.paises = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 5 }).subscribe(data => {
+      this.municipios = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 28 }).subscribe(data => {
+      this.tiposDocumento = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 29 }).subscribe(data => {
+      this.gruposSanguinio = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 13 }).subscribe(data => {
+      this.classes = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 30 }).subscribe(data => {
+      this.situacaosAcademica = data.body;
+    });
+    this.lookupService.query({ 'entidadeId.equals': 4 }).subscribe(data => {
+      this.provincias = data.body;
     });
   }
 
