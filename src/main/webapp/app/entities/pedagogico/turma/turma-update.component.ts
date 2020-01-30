@@ -38,13 +38,13 @@ export class TurmaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    descricao: [null, [Validators.required]],
-    anoLectivo: [null, [Validators.required]],
-    data: [null, [Validators.required]],
+    descricao: [null],
+    anoLectivo: [null],
+    data: [null],
     abertura: [null, [Validators.required]],
     encerramento: [null, [Validators.required]],
     lotacao: [null, [Validators.required, Validators.min(1)]],
-    aberta: [null, [Validators.required]],
+    aberta: [null],
     periodoLectivo: [null, [Validators.required]],
     turno: [null, [Validators.required]],
     sala: [null, [Validators.required]],

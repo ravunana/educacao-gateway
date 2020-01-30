@@ -2,6 +2,7 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="rv-turma-heading" jhiTranslate="educacaoApp.pedagogicoTurma.home.createOrEditLabel">Create or edit a Turma</h2>
+            <hr>
             <div>
                 <rv-alert-error></rv-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
@@ -9,7 +10,7 @@
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
                         readonly />
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.descricao" for="field_descricao">Descricao</label>
                     <input type="text" class="form-control" name="descricao" id="field_descricao"
                            formControlName="descricao"/>
@@ -19,8 +20,8 @@
                         This field is required.
                         </small>
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.anoLectivo" for="field_anoLectivo">Ano Lectivo</label>
                     <input type="number" class="form-control" name="anoLectivo" id="field_anoLectivo"
                            formControlName="anoLectivo"/>
@@ -34,8 +35,8 @@
                             This field should be a number.
                         </small>
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.data" for="field_data">Data</label>
                     <div class="d-flex">
                         <input id="field_data" type="datetime-local" class="form-control" name="data" formControlName="data" placeholder="YYYY-MM-DD HH:mm"/>
@@ -50,8 +51,10 @@
                             This field should be a date and time.
                         </small>
                     </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <div class="row">
+
+                <div class="form-group col">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.abertura" for="field_abertura">Abertura</label>
                     <div class="input-group">
                         <input id="field_abertura" type="text" class="form-control" name="abertura" ngbDatepicker  #aberturaDp="ngbDatepicker" formControlName="abertura"/>
@@ -66,7 +69,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.encerramento" for="field_encerramento">Encerramento</label>
                     <div class="input-group">
                         <input id="field_encerramento" type="text" class="form-control" name="encerramento" ngbDatepicker  #encerramentoDp="ngbDatepicker" formControlName="encerramento"/>
@@ -80,6 +83,7 @@
                         This field is required.
                         </small>
                     </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.lotacao" for="field_lotacao">Lotacao</label>
@@ -100,7 +104,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.aberta" for="field_aberta">Aberta</label>
                     <input type="checkbox" class="form-control" name="aberta" id="field_aberta"
                            formControlName="aberta"/>
@@ -110,7 +114,7 @@
                         This field is required.
                         </small>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="educacaoApp.pedagogicoTurma.periodoLectivo" for="field_periodoLectivo">Periodo Lectivo</label>
                     <!-- <input type="text" class="form-control" name="periodoLectivo" id="field_periodoLectivo"
@@ -198,6 +202,7 @@
                     </select>
                 </div>
             </div>
+            <hr>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
