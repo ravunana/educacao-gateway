@@ -50,7 +50,7 @@ export class TurmaUpdateComponent implements OnInit {
     sala: [null, [Validators.required]],
     classe: [null, [Validators.required]],
     cursoId: [null, Validators.required],
-    coordenadorId: [null, Validators.required]
+    coordenadorId: [null]
   });
 
   constructor(

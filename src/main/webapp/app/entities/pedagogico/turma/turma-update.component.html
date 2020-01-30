@@ -197,12 +197,6 @@
                         <option [ngValue]="professorOption.id" *ngFor="let professorOption of professors; trackBy: trackById">{{professorOption.nome}}</option>
                     </select>
                 </div>
-                <div *ngIf="editForm.get('coordenadorId')!.invalid && (editForm.get('coordenadorId')!.dirty || editForm.get('coordenadorId')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('coordenadorId')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
